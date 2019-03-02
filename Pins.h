@@ -23,28 +23,28 @@ extern CAN can;
 /********************
  * 		enc			*
  ********************/
-extern SingleLegQEI enc_FRf;
-extern SingleLegQEI enc_FRr;
-extern SingleLegQEI enc_FLf;
-extern SingleLegQEI enc_FLr;
+extern SingleLegQEI enc_RRf;
+extern SingleLegQEI enc_RRr;
+extern SingleLegQEI enc_RLf;
+extern SingleLegQEI enc_RLr;
 
 
 /********************
  * 		スイッチ		*
  ********************/
-extern InitSwitch sw_FRf;
-extern InitSwitch sw_FRr;
-extern InitSwitch sw_FLf;
-extern InitSwitch sw_FLr;
+extern InitSwitch sw_RRf;
+extern InitSwitch sw_RRr;
+extern InitSwitch sw_RLf;
+extern InitSwitch sw_RLr;
 
 
 /********************
  * 		DCモータ		*
  ********************/
-extern PwmOut motor_FRf;
-extern PwmOut motor_FRr;
-extern PwmOut motor_FLf;
-extern PwmOut motor_FLr;
+extern PwmOut motor_RRf;
+extern PwmOut motor_RRr;
+extern PwmOut motor_RLf;
+extern PwmOut motor_RLr;
 
 
 /*----------------------
@@ -61,8 +61,8 @@ extern Timer AdCycle; //AdjustCycleで使うタイマ
 /*----------------------
  ---------関数---------
  ----------------------*/
-void AdjustCycle(int t_us);
-void initParts();
+extern void AdjustCycle(int t_us);
+extern void initParts();
 
 
 #endif /* PINS_H_ */

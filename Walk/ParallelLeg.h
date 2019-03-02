@@ -12,7 +12,6 @@
 #include "MRMode.h"
 #include "ClockTimer.h"
 #include "CANs/CANReceiver.h"
-#include "CANs/CANSynchronizer.h"
 
 //脚持ち上げ:脚下げ = LEGUP:LEGDOWN
 #define LEGUP_MOVE 4.0f
@@ -27,7 +26,7 @@ class ParallelLeg
 {
 public:
 	ParallelLeg(int fr, int rl, float pos_x, float pos_y);
-	void set_dependencies(ClockTimer *tm_period, MRMode *mode, CANReceiver *can_rcv, CANSynchronizer *can_syn);
+	void set_dependencies(ClockTimer *tm_period, MRMode *mode, CANReceiver *can_rcv);
 
 	void set_x_lim(float xmax, float xmin);
 	void set_y_lim(float ymax, float ymin);
@@ -79,7 +78,6 @@ private:
 	ClockTimer *timer_period;
 	MRMode *MRmode;
 	CANReceiver *can_receiver;
-	CANSynchronizer *can_synchronizer;
 	float gradient; //フィールド勾配
 	float height;	//振り上げ高さ
 

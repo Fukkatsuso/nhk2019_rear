@@ -12,6 +12,9 @@ RM := rm -rf
 -include mbed-src/targets/cmsis/TARGET_NXP/TARGET_LPC176X/TOOLCHAIN_GCC_CR/subdir.mk
 -include mbed-src/targets/cmsis/TARGET_NXP/TARGET_LPC176X/subdir.mk
 -include mbed-src/common/subdir.mk
+-include Walk/Protected/subdir.mk
+-include Walk/CANs/subdir.mk
+-include Walk/subdir.mk
 -include QEI/subdir.mk
 -include subdir.mk
 -include objects.mk
@@ -42,25 +45,25 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: RearLegs_2v_1.axf
+all: RearLegs_2.0.axf
 
 # Tool invocations
-RearLegs_2v_1.axf: $(OBJS) $(USER_OBJS)
+RearLegs_2.0.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU C++ Linker'
-	arm-none-eabi-c++ -nostdlib -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\hal" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\api" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\targets" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\targets\hal" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\targets\hal\TARGET_NXP" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\targets\hal\TARGET_NXP\TARGET_LPC176X" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\targets\cmsis" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\targets\cmsis\TARGET_NXP" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\targets\cmsis\TARGET_NXP\TARGET_LPC176X" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\targets\cmsis\TARGET_NXP\TARGET_LPC176X\TOOLCHAIN_GCC_CR" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\common" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\QEI" -Xlinker -Map="RearLegs_2v_1.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2v_1\mbed-src\targets\cmsis\TARGET_NXP\TARGET_LPC176X\TOOLCHAIN_GCC_CR\LPC1768.ld" -o "RearLegs_2v_1.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-c++ -nostdlib -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\hal" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\api" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\targets" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\targets\hal" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\targets\hal\TARGET_NXP" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\targets\hal\TARGET_NXP\TARGET_LPC176X" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\targets\cmsis" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\targets\cmsis\TARGET_NXP" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\targets\cmsis\TARGET_NXP\TARGET_LPC176X" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\targets\cmsis\TARGET_NXP\TARGET_LPC176X\TOOLCHAIN_GCC_CR" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\common" -L"C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\QEI" -Xlinker -Map="RearLegs_2.0.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\targets\cmsis\TARGET_NXP\TARGET_LPC176X\TOOLCHAIN_GCC_CR\LPC1768.ld" -o "RearLegs_2.0.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
 
 # Other Targets
 clean:
-	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(CPP_DEPS)$(C_DEPS) RearLegs_2v_1.axf
+	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(CPP_DEPS)$(C_DEPS) RearLegs_2.0.axf
 	-@echo ' '
 
 post-build:
 	-@echo 'Performing post-build steps'
-	-arm-none-eabi-size "RearLegs_2v_1.axf"; arm-none-eabi-objcopy -O binary "RearLegs_2v_1.axf" "RearLegs_2v_1.bin" ; # checksum -p LPC1768 -d "RearLegs_2v_1.bin";
+	-arm-none-eabi-size "RearLegs_2.0.axf"; arm-none-eabi-objcopy -O binary "RearLegs_2.0.axf" "RearLegs_2.0.bin" ; # checksum -p LPC1768 -d "RearLegs_2.0.bin";
 	-@echo ' '
 
 .PHONY: all clean dependents
