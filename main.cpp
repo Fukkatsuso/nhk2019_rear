@@ -42,7 +42,7 @@ int main(){
 	initLegs();
 
 	while(1){
-		AdjustCycle(5000);
+		AdjustCycle(1000);
 
 		MRmode.update();
 		if(MRmode.is_switched())set_limits();
@@ -63,7 +63,12 @@ int main(){
 		RLr.move_to(RL.get_x(), RL.get_y());
 
 		//DEBUG
-//		pc.printf("", );
+		pc.printf("mode [%d][%d]  ", RR.get_mode(), RL.get_mode());
+		pc.printf("timer [%1.4f][%1.4f]  ", timer_RR.read(), timer_RL.read());
+		pc.printf("speed:%3.2f  dir:%1.3f  ", can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction));
+//		pc.printf("sw[%d][%d][%d][%d]  ", sw_RRf.read(), sw_RRr.read(), sw_RLf.read(), sw_RLr.read());
+//		pc.printf("enc[%2.2f][%2.2f][%2.2f][%2.2f]  ", enc_RRf.getAngle(), enc_RRr.getAngle(), enc_RLf.getAngle(), enc_RLr.getAngle());
+		pc.printf("\r\n");
 	}
 }
 
@@ -94,6 +99,8 @@ void set_limits(){
 	RLr.set_limits();
 	RR.set_limits();
 	RL.set_limits();
+	RR.set_orbits();
+	RL.set_orbits();
 }
 
 
@@ -101,8 +108,7 @@ void CANrcv(){
 	if(can.read(rcvMsg)){
 		unsigned int id = rcvMsg.id;
 		if(CANID_is_from(id, CANID::FromMaster)){
-			if(CANID_is_type(id, CANID::TimerReset)){
-				//タイマーリセット	//リセットできないならCANsnd_TimerReset()に移動
+			if(CANID_is_type(id, CANID::TimerReset)){//タイマーリセット
 				timer_RR.reset();
 				timer_RL.reset();
 				return;

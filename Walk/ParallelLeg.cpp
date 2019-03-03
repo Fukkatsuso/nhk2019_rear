@@ -30,6 +30,7 @@ void ParallelLeg::set_dependencies(ClockTimer *tm_period, MRMode *mode, CANRecei
 	this->MRmode = mode;
 	this->can_receiver = can_rcv;
 	set_limits();
+	set_orbits();
 }
 
 
@@ -86,7 +87,6 @@ void ParallelLeg::set_orbits()
 	set_gradient(orbits->gradient);
 }
 
-//FrontLegのみ/////////////////////////////////
 void ParallelLeg::set_period(float period)
 {
 	if(period < 0)period = 0;
@@ -99,7 +99,6 @@ void ParallelLeg::set_duty(float duty)
 	else if(duty > 1.0)duty = 1.0;
 	this->duty = duty;
 }
-//////////////////////////////////////////////
 
 
 void ParallelLeg::walk(float spd, float dir)
@@ -139,9 +138,9 @@ float ParallelLeg::curve_adjust(float value)
 //}
 
 void ParallelLeg::timer_update()
-{
-//歩き始めたらタイマーリセット->その瞬間tickerセット
-//	if(mode_prv==Stay && mode!=Stay)can_synchronizer->timer_reset(true);
+{	//歩き始めたらタイマーリセット->その瞬間tickerセット
+	if(mode==Stay)timer_period->reset();
+	if(timer_period->read()>period)timer_period->reset();
 	timer_period->calc_dt(); //	calc_dt(tm);//時刻更新
 }
 
