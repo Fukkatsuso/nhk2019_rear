@@ -6,17 +6,20 @@
 CPP_SRCS += \
 ../Walk/CANs/CANProtocol.cpp \
 ../Walk/CANs/CANReceiver.cpp \
-../Walk/CANs/CANSender.cpp 
+../Walk/CANs/CANSender.cpp \
+../Walk/CANs/CANSynchronizer.cpp 
 
 OBJS += \
 ./Walk/CANs/CANProtocol.o \
 ./Walk/CANs/CANReceiver.o \
-./Walk/CANs/CANSender.o 
+./Walk/CANs/CANSender.o \
+./Walk/CANs/CANSynchronizer.o 
 
 CPP_DEPS += \
 ./Walk/CANs/CANProtocol.d \
 ./Walk/CANs/CANReceiver.d \
-./Walk/CANs/CANSender.d 
+./Walk/CANs/CANSender.d \
+./Walk/CANs/CANSynchronizer.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

@@ -19,6 +19,12 @@ PID::PID(){}
 PID::~PID(){}
 
 
+void PID::set_timer(Timer *timer)
+{
+	this->timer = timer;
+}
+
+//事前にset_timer()を実行すること!
 void PID::set_PID(float Kp, float Ki, float Kd)
 {
 	this->Kp = Kp;
@@ -46,10 +52,10 @@ void PID::start(float obs_init, float opr_init)
 	//後でコレが_opr.prvの値になる
 	opr.nxt = opr_init;
 
-	timer.reset();
-	timer.start();
+	timer->reset();
+	timer->start();
 
-	time.now = timer.read();
+	time.now = 0;//タイマーが足りないので全脚で共通のタイマーを使うことに
 }
 
 
@@ -74,7 +80,7 @@ void PID::param_update(float obs_now, float obs_tgt)
 
 	//ループ時間
 	time.prv = time.now;
-	time.now = timer.read();
+	time.now = timer->read();
 	time.dif = time.now - time.prv;
 }
 

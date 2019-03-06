@@ -34,10 +34,10 @@ InitSwitch sw_RLr(p6, 1);
 /********************
  * 		DCモータ		*
  ********************/
-PwmOut motor_RRf(p25);
-PwmOut motor_RRr(p26);
-PwmOut motor_RLf(p23);
-PwmOut motor_RLr(p24);
+PwmOut motor_RRf(p24);//+-逆
+PwmOut motor_RRr(p23);//+-逆
+PwmOut motor_RLf(p21);//+-逆
+PwmOut motor_RLr(p22);//+-逆
 
 /*----------------------
  ----mbed本体上のピン-----

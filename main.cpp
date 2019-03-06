@@ -10,6 +10,8 @@
 
 LocalFileSystem local("local");//PIDゲイン調整に使用
 
+Timer timer_PID;
+
 ClockTimer timer_RR;
 ClockTimer timer_RL;
 SingleLeg RRf(Front, Right, BASE_X, 0);
@@ -63,21 +65,23 @@ int main(){
 		RLr.move_to(RL.get_x(), RL.get_y());
 
 		//DEBUG
-		pc.printf("mode [%d][%d]  ", RR.get_mode(), RL.get_mode());
-		pc.printf("timer [%1.4f][%1.4f]  ", timer_RR.read(), timer_RL.read());
-		pc.printf("speed:%3.2f  dir:%1.3f  ", can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction));
-//		pc.printf("sw[%d][%d][%d][%d]  ", sw_RRf.read(), sw_RRr.read(), sw_RLf.read(), sw_RLr.read());
-//		pc.printf("enc[%2.2f][%2.2f][%2.2f][%2.2f]  ", enc_RRf.getAngle(), enc_RRr.getAngle(), enc_RLf.getAngle(), enc_RLr.getAngle());
+		pc.printf("mode:%d  ", RR.get_mode());
+		pc.printf("timer:%1.4f  ", timer_RR.read());
+		pc.printf("speed:%3.4f  dir:%1.3f  ", can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction));
+		pc.printf("x:%3.3f  y:%3.3f  ", RL.get_x(), RL.get_y());
+		pc.printf("enc:%3.2f  ", enc_RLf.getAngle());
+		pc.printf("angle:%3.2f  duty:%1.4f  ", RLf.get_angle(), RLf.get_duty());
+
 		pc.printf("\r\n");
 	}
 }
 
 
 void initLegs(){
-	RRf.unitize(&motor_RRf, &enc_RRf, &sw_RRf);
-	RRr.unitize(&motor_RRr, &enc_RRr, &sw_RRr);
-	RLf.unitize(&motor_RLf, &enc_RLf, &sw_RLf);
-	RLr.unitize(&motor_RLr, &enc_RLr, &sw_RLr);
+	RRf.unitize(&motor_RRf, &enc_RRf, &sw_RRf, &timer_PID);
+	RRr.unitize(&motor_RRr, &enc_RRr, &sw_RRr, &timer_PID);
+	RLf.unitize(&motor_RLf, &enc_RLf, &sw_RLf, &timer_PID);
+	RLr.unitize(&motor_RLr, &enc_RLr, &sw_RLr, &timer_PID);
 	RRf.set_PID_from_file("/local/PID_RRf.txt");
 	RRr.set_PID_from_file("/local/PID_RRr.txt");
 	RLf.set_PID_from_file("/local/PID_RLf.txt");
