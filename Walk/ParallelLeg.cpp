@@ -92,12 +92,14 @@ void ParallelLeg::set_orbits()
 
 void ParallelLeg::set_period(float period)
 {
+	if(this->period==period)return;
 	if(period < 0)period = 0;
 	this->period = period;
 }
 
 void ParallelLeg::set_duty(float duty)
 {
+	if(this->duty==duty)return;
 	if(duty < 0.5)duty = 0.5;
 	else if(duty > 1.0)duty = 1.0;
 	this->duty = duty;
@@ -142,8 +144,8 @@ float ParallelLeg::curve_adjust(float value)
 
 void ParallelLeg::timer_update()
 {	//歩き始めたらタイマーリセット->その瞬間tickerセット
-	if(mode==Stay)timer_period->reset();
 	if(timer_period->read()>period)timer_period->reset();
+	else if(mode==Stay)timer_period->reset();
 	timer_period->calc_dt(); //	calc_dt(tm);//時刻更新
 }
 
@@ -158,8 +160,8 @@ void ParallelLeg::set_timing()
 			else timing[1] = period / 2.0;//FL
 		}
 		else{//fr==Rear
-			if(rl==Left) timing[1] = period * (duty - 0.5);//RL
-			else timing[1] = period * (1.0 - duty);//RR
+			if(rl==Left) timing[1] = period * (duty - 0.5);//RL	//period/2 - period*(1-duty)
+			else timing[1] = period * duty;//RR	//period - period*(1-duty)
 		}
 	}
 	else{//後退（前後左右反転）: RL,FR,RR,FLだった
@@ -169,7 +171,7 @@ void ParallelLeg::set_timing()
 		}
 		else{//fr==Front
 			if(rl==Right) timing[1] = period * (duty - 0.5);//FR
-			else timing[1] = period * (1.0 - duty);//FL
+			else timing[1] = period * duty;//FL
 		}
 	}
 	timing[2] = timing[1] + (1.0-duty)*period;//復帰完了
@@ -202,7 +204,7 @@ void ParallelLeg::check_flag()
 	else flag.recovery = false;
 
 	//静止コマンドフラグ
-	if(fabs(speed)==0 && fabs(direction)==0)//コマンドが「停止」のとき
+	if(fabs(speed)==0 /*&& fabs(direction)==0*/)//コマンドが「停止」のとき
 		flag.stay_command = true;
 	else flag.stay_command = false;
 
