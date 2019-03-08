@@ -68,7 +68,26 @@ int main(){
 		AdjustCycle(1000);
 
 		MRmode.update();
-		if(MRmode.is_switched())set_limits();
+//		if(MRmode.is_switched())
+			set_limits();
+
+		if((int)can_receiver.get_data(CANID::LegUp)&0x2)RR.set_y_initial(280-110);
+		if((int)can_receiver.get_data(CANID::LegUp)&0x8)RL.set_y_initial(280-110);
+
+//		switch((int)MRmode.get_area(MRMode::Now)){
+//		case MRMode::GobiArea:
+//			walk_period = 1;
+//			walk_duty = 0.55;
+//			break;
+//		case MRMode::SandDune:
+//			walk_period = 2;
+//			walk_duty = 0.8;
+//			break;
+//		case MRMode::Tussock1:
+//			walk_period = 2;
+//			walk_duty = 0.8;
+//			break;
+//		}
 
 		RR.set_period(walk_period);
 		RR.set_duty(walk_duty);
@@ -133,16 +152,15 @@ void set_limits(){
 void CANrcv(){
 	if(can.read(rcvMsg)){
 		unsigned int id = rcvMsg.id;
-		if(CANID_is_from(id, CANID::FromMaster)){
-			if(CANID_is_type(id, CANID::TimerReset)){//タイマーリセット
-				timer_RR.reset();
-				timer_RL.reset();
-				return;
-			}
-			else if(CANID_is_to(id, CANID::ToSlaveAll)){
-				//歩行パラメータ取得
-				can_receiver.receive(id, rcvMsg.data);
-			}
+		if(!CANID_is_from(id, CANID::FromMaster))return;
+		if(CANID_is_type(id, CANID::TimerReset)){//タイマーリセット
+			timer_RR.reset();
+			timer_RL.reset();
+			return;
+		}
+		else if(CANID_is_to(id, CANID::ToSlaveAll)){
+			//歩行パラメータ取得
+			can_receiver.receive(id, rcvMsg.data);
 		}
 	}
 }
@@ -199,28 +217,28 @@ void initLegs(SingleLeg *leg_f, InitLegInfo *info_f,
 }
 
 void autoInit(){
-	InitLegInfo rrf, rrr, rlf, rlr;
-	rrf.enc_reset = rrr.enc_reset = rlf.enc_reset = rlr.enc_reset = false;
-	rrf.finish_init = rrr.finish_init = rlf.finish_init = rlr.finish_init = false;
-
-	while(!(rrf.finish_init && rrr.finish_init && rlf.finish_init && rlr.finish_init)){
+			//	右前,右後,左前,左後
+	InitLegInfo Rf, Rr, Lf, Lr;
+	Rf.enc_reset = Rr.enc_reset = Lf.enc_reset = Lr.enc_reset = false;
+	Rf.finish_init = Rr.finish_init = Lf.finish_init = Lr.finish_init = false;
+	while(!(Rf.finish_init && Rr.finish_init && Lf.finish_init && Lr.finish_init)){
 		AdjustCycle(5000);
-		initLegs(&RRf, &rrf, &RRr, &rrr, &fw_RR);
-		initLegs(&RLf, &rlf, &RLr, &rlr, &fw_RL);
+		initLegs(&RRf, &Rf, &RRr, &Rr, &fw_RR);
+		initLegs(&RLf, &Lf, &RLr, &Lr, &fw_RL);
 		pc.printf("enc");
 		pc.printf("[%3.2f][%3.2f]", enc_RRf.getAngle(), enc_RRr.getAngle());
 		pc.printf("[%3.2f][%3.2f]", enc_RLf.getAngle(), enc_RLr.getAngle());
 		pc.printf("  target");
-		if(!rrf.enc_reset || !rrr.enc_reset)
-			pc.printf("ang[%3.2f][%3.2f]", rrf.angle_target, rrr.angle_target);
+		if(!Rf.enc_reset || !Rr.enc_reset)
+			pc.printf("ang[%3.2f][%3.2f]", Rf.angle_target, Rr.angle_target);
 		else{
-			pc.printf("xy[%3.2f][%3.2f]", rrf.x_target, rrf.y_target);
+			pc.printf("xy[%3.2f][%3.2f]", Rf.x_target, Rf.y_target);
 			pc.printf("est[%3.2f][%3.2f]", fw_RR.get_x(), fw_RR.get_y());
 		}
-		if(!rlf.enc_reset || !rlr.enc_reset)
-			pc.printf("ang[%3.2f][%3.2f]", rlf.angle_target, rlr.angle_target);
+		if(!Lf.enc_reset || !Lr.enc_reset)
+			pc.printf("ang[%3.2f][%3.2f]", Lf.angle_target, Lr.angle_target);
 		else{
-			pc.printf("xy[%3.2f][%3.2f]", rlf.x_target, rlr.y_target);
+			pc.printf("xy[%3.2f][%3.2f]", Lf.x_target, Lr.y_target);
 			pc.printf("est[%3.2f][%3.2f]", fw_RL.get_x(), fw_RL.get_y());
 		}
 //		pc.printf("  sw");
@@ -230,5 +248,7 @@ void autoInit(){
 		pc.printf("[%1.3f][%1.3f]", RRf.get_duty(), RRr.get_duty());
 		pc.printf("[%1.3f][%1.3f]", RLf.get_duty(), RLr.get_duty());
 		pc.printf("\r\n");
+
+		if(pc.readable())if(pc.getc()=="s")break;//"s"を押したら強制終了
 	}
 }
