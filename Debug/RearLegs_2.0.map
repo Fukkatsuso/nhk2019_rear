@@ -6580,6 +6580,8 @@ Discarded input sections
  .bss           0x00000000        0x0 ./Walk/MRMode.o
  .text._ZN6MRMode11is_switchedEv
                 0x00000000       0x18 ./Walk/MRMode.o
+ .text._ZN6MRMode8get_areaENS_9ReferenceE
+                0x00000000       0x20 ./Walk/MRMode.o
  .debug_macro   0x00000000      0x8d4 ./Walk/MRMode.o
  .debug_macro   0x00000000       0x10 ./Walk/MRMode.o
  .debug_macro   0x00000000       0x10 ./Walk/MRMode.o
@@ -6704,6 +6706,22 @@ Discarded input sections
  .bss           0x00000000        0x0 ./Walk/ParallelLeg.o
  .text._ZN11ParallelLeg13set_x_initialEf
                 0x00000000       0x1c ./Walk/ParallelLeg.o
+ .text._ZN11ParallelLeg11walk_stableEfff
+                0x00000000       0x74 ./Walk/ParallelLeg.o
+ .text._ZN11ParallelLeg17set_stable_timingEv
+                0x00000000      0x2fc ./Walk/ParallelLeg.o
+ .text._ZN11ParallelLeg16walk_stable_modeEv
+                0x00000000      0x150 ./Walk/ParallelLeg.o
+ .text._ZN11ParallelLeg17check_stable_flagEv
+                0x00000000      0x140 ./Walk/ParallelLeg.o
+ .text._ZN11ParallelLeg20calc_stable_velocityEv
+                0x00000000       0x58 ./Walk/ParallelLeg.o
+ .text._ZN11ParallelLeg16calc_stable_stepEv
+                0x00000000       0x88 ./Walk/ParallelLeg.o
+ .text._ZN11ParallelLeg24calc_stable_vel_recoveryEv
+                0x00000000      0x1dc ./Walk/ParallelLeg.o
+ .text._ZN11ParallelLeg20calc_stable_positionEv
+                0x00000000      0x16c ./Walk/ParallelLeg.o
  .text._ZN11ParallelLeg13get_x_initialEv
                 0x00000000       0x18 ./Walk/ParallelLeg.o
  .text._ZN11ParallelLeg13get_y_initialEv
@@ -7872,7 +7890,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x22 ./main.o
  .debug_macro   0x00000000       0x1c ./main.o
  .debug_macro   0x00000000       0x1c ./main.o
- .debug_macro   0x00000000       0x22 ./main.o
+ .debug_macro   0x00000000       0x3a ./main.o
  .data          0x00000000        0x0 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
  .bss           0x00000000        0x0 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
  .data          0x00000000        0x0 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivdf3.o)
@@ -8795,7 +8813,7 @@ END GROUP
                 0x000000e4                __data_section_table_end = .
                 0x000000e4                __bss_section_table = .
                 0x000000e4        0x4 LONG 0x10000d28 ADDR (.bss)
-                0x000000e8        0x4 LONG 0xf1c SIZEOF (.bss)
+                0x000000e8        0x4 LONG 0xf7c SIZEOF (.bss)
                 0x000000ec        0x4 LONG 0x2007c000 ADDR (.bss_RAM2)
                 0x000000f0        0x4 LONG 0x0 SIZEOF (.bss_RAM2)
                 0x000000f4                __bss_section_table_end = .
@@ -9528,319 +9546,322 @@ END GROUP
  .text._ZN6MRMode6updateEv
                 0x00004330       0x80 ./Walk/MRMode.o
                 0x00004330                MRMode::update()
- .text._ZN6MRMode8get_areaENS_9ReferenceE
-                0x000043b0       0x20 ./Walk/MRMode.o
-                0x000043b0                MRMode::get_area(MRMode::Reference)
  .text._ZN6MRMode7get_nowEv
-                0x000043d0       0x18 ./Walk/MRMode.o
-                0x000043d0                MRMode::get_now()
+                0x000043b0       0x18 ./Walk/MRMode.o
+                0x000043b0                MRMode::get_now()
  .text._ZN6MRMode10get_limitsENS_4AreaE
-                0x000043e8       0x24 ./Walk/MRMode.o
-                0x000043e8                MRMode::get_limits(MRMode::Area)
+                0x000043c8       0x24 ./Walk/MRMode.o
+                0x000043c8                MRMode::get_limits(MRMode::Area)
  .text._ZN6MRMode10get_orbitsENS_4AreaE
-                0x0000440c       0x24 ./Walk/MRMode.o
-                0x0000440c                MRMode::get_orbits(MRMode::Area)
+                0x000043ec       0x24 ./Walk/MRMode.o
+                0x000043ec                MRMode::get_orbits(MRMode::Area)
  .text._ZN11ParallelLegC2Eiiff
-                0x00004430       0x64 ./Walk/ParallelLeg.o
-                0x00004430                ParallelLeg::ParallelLeg(int, int, float, float)
-                0x00004430                ParallelLeg::ParallelLeg(int, int, float, float)
+                0x00004410       0x7c ./Walk/ParallelLeg.o
+                0x00004410                ParallelLeg::ParallelLeg(int, int, float, float)
+                0x00004410                ParallelLeg::ParallelLeg(int, int, float, float)
  .text._ZN11ParallelLeg16set_dependenciesEP10ClockTimerP6MRModeP11CANReceiver
-                0x00004494       0x34 ./Walk/ParallelLeg.o
-                0x00004494                ParallelLeg::set_dependencies(ClockTimer*, MRMode*, CANReceiver*)
+                0x0000448c       0x34 ./Walk/ParallelLeg.o
+                0x0000448c                ParallelLeg::set_dependencies(ClockTimer*, MRMode*, CANReceiver*)
+ .text._ZN11ParallelLeg13mrmode_updateEv
+                0x000044c0       0x30 ./Walk/ParallelLeg.o
+                0x000044c0                ParallelLeg::mrmode_update()
  .text._ZN11ParallelLeg9set_x_limEff
-                0x000044c8       0x24 ./Walk/ParallelLeg.o
-                0x000044c8                ParallelLeg::set_x_lim(float, float)
+                0x000044f0       0x24 ./Walk/ParallelLeg.o
+                0x000044f0                ParallelLeg::set_x_lim(float, float)
  .text._ZN11ParallelLeg9set_y_limEff
-                0x000044ec       0x24 ./Walk/ParallelLeg.o
-                0x000044ec                ParallelLeg::set_y_lim(float, float)
+                0x00004514       0x24 ./Walk/ParallelLeg.o
+                0x00004514                ParallelLeg::set_y_lim(float, float)
  .text._ZN11ParallelLeg10set_limitsEv
-                0x00004510       0x50 ./Walk/ParallelLeg.o
-                0x00004510                ParallelLeg::set_limits()
+                0x00004538       0x44 ./Walk/ParallelLeg.o
+                0x00004538                ParallelLeg::set_limits()
  .text._ZN11ParallelLeg13set_y_initialEf
-                0x00004560       0x1c ./Walk/ParallelLeg.o
-                0x00004560                ParallelLeg::set_y_initial(float)
+                0x0000457c       0x1c ./Walk/ParallelLeg.o
+                0x0000457c                ParallelLeg::set_y_initial(float)
  .text._ZN11ParallelLeg11set_initialEff
-                0x0000457c       0x24 ./Walk/ParallelLeg.o
-                0x0000457c                ParallelLeg::set_initial(float, float)
+                0x00004598       0x24 ./Walk/ParallelLeg.o
+                0x00004598                ParallelLeg::set_initial(float, float)
  .text._ZN11ParallelLeg10set_heightEf
-                0x000045a0       0x1c ./Walk/ParallelLeg.o
-                0x000045a0                ParallelLeg::set_height(float)
- *fill*         0x000045bc        0x4 ff
+                0x000045bc       0x1c ./Walk/ParallelLeg.o
+                0x000045bc                ParallelLeg::set_height(float)
  .text._ZN11ParallelLeg12set_gradientEf
-                0x000045c0       0x54 ./Walk/ParallelLeg.o
-                0x000045c0                ParallelLeg::set_gradient(float)
+                0x000045d8       0x54 ./Walk/ParallelLeg.o
+                0x000045d8                ParallelLeg::set_gradient(float)
  .text._ZN11ParallelLeg10set_orbitsEv
-                0x00004614       0x58 ./Walk/ParallelLeg.o
-                0x00004614                ParallelLeg::set_orbits()
+                0x0000462c       0x4c ./Walk/ParallelLeg.o
+                0x0000462c                ParallelLeg::set_orbits()
  .text._ZN11ParallelLeg10set_periodEf
-                0x0000466c       0x44 ./Walk/ParallelLeg.o
-                0x0000466c                ParallelLeg::set_period(float)
+                0x00004678       0x44 ./Walk/ParallelLeg.o
+                0x00004678                ParallelLeg::set_period(float)
  .text._ZN11ParallelLeg8set_dutyEf
-                0x000046b0       0x5c ./Walk/ParallelLeg.o
-                0x000046b0                ParallelLeg::set_duty(float)
+                0x000046bc       0x5c ./Walk/ParallelLeg.o
+                0x000046bc                ParallelLeg::set_duty(float)
  .text._ZN11ParallelLeg4walkEff
-                0x0000470c       0x5c ./Walk/ParallelLeg.o
-                0x0000470c                ParallelLeg::walk(float, float)
+                0x00004718       0x5c ./Walk/ParallelLeg.o
+                0x00004718                ParallelLeg::walk(float, float)
  .text._ZN11ParallelLeg4walkEv
-                0x00004768       0x38 ./Walk/ParallelLeg.o
-                0x00004768                ParallelLeg::walk()
+                0x00004774       0x38 ./Walk/ParallelLeg.o
+                0x00004774                ParallelLeg::walk()
  .text._ZN11ParallelLeg12curve_adjustEf
-                0x000047a0       0x80 ./Walk/ParallelLeg.o
-                0x000047a0                ParallelLeg::curve_adjust(float)
+                0x000047ac       0x80 ./Walk/ParallelLeg.o
+                0x000047ac                ParallelLeg::curve_adjust(float)
  .text._ZN11ParallelLeg12timer_updateEv
-                0x00004820       0x64 ./Walk/ParallelLeg.o
-                0x00004820                ParallelLeg::timer_update()
+                0x0000482c       0x64 ./Walk/ParallelLeg.o
+                0x0000482c                ParallelLeg::timer_update()
  .text._ZN11ParallelLeg10set_timingEv
-                0x00004884      0x1d8 ./Walk/ParallelLeg.o
-                0x00004884                ParallelLeg::set_timing()
+                0x00004890      0x1d8 ./Walk/ParallelLeg.o
+                0x00004890                ParallelLeg::set_timing()
  .text._ZN11ParallelLeg9walk_modeEv
-                0x00004a5c      0x168 ./Walk/ParallelLeg.o
-                0x00004a5c                ParallelLeg::walk_mode()
+                0x00004a68      0x168 ./Walk/ParallelLeg.o
+                0x00004a68                ParallelLeg::walk_mode()
  .text._ZN11ParallelLeg10check_flagEv
-                0x00004bc4      0x108 ./Walk/ParallelLeg.o
-                0x00004bc4                ParallelLeg::check_flag()
+                0x00004bd0      0x108 ./Walk/ParallelLeg.o
+                0x00004bd0                ParallelLeg::check_flag()
  .text._ZN11ParallelLeg13calc_velocityEv
-                0x00004ccc       0xb4 ./Walk/ParallelLeg.o
-                0x00004ccc                ParallelLeg::calc_velocity()
+                0x00004cd8       0xb4 ./Walk/ParallelLeg.o
+                0x00004cd8                ParallelLeg::calc_velocity()
  .text._ZN11ParallelLeg9calc_stepEv
-                0x00004d80       0x98 ./Walk/ParallelLeg.o
-                0x00004d80                ParallelLeg::calc_step()
+                0x00004d8c       0x98 ./Walk/ParallelLeg.o
+                0x00004d8c                ParallelLeg::calc_step()
+ *fill*         0x00004e24        0x4 ff
  .text._ZN11ParallelLeg17calc_vel_recoveryEv
-                0x00004e18      0x4dc ./Walk/ParallelLeg.o
-                0x00004e18                ParallelLeg::calc_vel_recovery()
+                0x00004e28      0x45c ./Walk/ParallelLeg.o
+                0x00004e28                ParallelLeg::calc_vel_recovery()
  .text._ZN11ParallelLeg13calc_positionEv
-                0x000052f4      0x168 ./Walk/ParallelLeg.o
-                0x000052f4                ParallelLeg::calc_position()
+                0x00005284      0x168 ./Walk/ParallelLeg.o
+                0x00005284                ParallelLeg::calc_position()
  .text._ZN11ParallelLeg5get_xEv
-                0x0000545c       0x18 ./Walk/ParallelLeg.o
-                0x0000545c                ParallelLeg::get_x()
+                0x000053ec       0x18 ./Walk/ParallelLeg.o
+                0x000053ec                ParallelLeg::get_x()
  .text._ZN11ParallelLeg5get_yEv
-                0x00005474       0x18 ./Walk/ParallelLeg.o
-                0x00005474                ParallelLeg::get_y()
+                0x00005404       0x18 ./Walk/ParallelLeg.o
+                0x00005404                ParallelLeg::get_y()
  .text._ZN11ParallelLeg8get_modeEv
-                0x0000548c       0x18 ./Walk/ParallelLeg.o
-                0x0000548c                ParallelLeg::get_mode()
+                0x0000541c       0x18 ./Walk/ParallelLeg.o
+                0x0000541c                ParallelLeg::get_mode()
  .text._ZN4mbed6PwmOut5writeEf
-                0x000054a4       0x1c ./Walk/SingleLeg.o
-                0x000054a4                mbed::PwmOut::write(float)
+                0x00005434       0x1c ./Walk/SingleLeg.o
+                0x00005434                mbed::PwmOut::write(float)
  .text._ZN10InitSwitch4readEv
-                0x000054c0       0x28 ./Walk/SingleLeg.o
-                0x000054c0                InitSwitch::read()
+                0x00005450       0x28 ./Walk/SingleLeg.o
+                0x00005450                InitSwitch::read()
  .text._Z13rad_to_degreef
-                0x000054e8       0x4c ./Walk/SingleLeg.o
-                0x000054e8                rad_to_degree(float)
+                0x00005478       0x4c ./Walk/SingleLeg.o
+                0x00005478                rad_to_degree(float)
  .text._ZN9SingleLegC2E11LegPositionS0_ff
-                0x00005534       0x90 ./Walk/SingleLeg.o
-                0x00005534                SingleLeg::SingleLeg(LegPosition, LegPosition, float, float)
-                0x00005534                SingleLeg::SingleLeg(LegPosition, LegPosition, float, float)
+                0x000054c4       0xa0 ./Walk/SingleLeg.o
+                0x000054c4                SingleLeg::SingleLeg(LegPosition, LegPosition, float, float)
+                0x000054c4                SingleLeg::SingleLeg(LegPosition, LegPosition, float, float)
  .text._ZN9SingleLeg7unitizeEPN4mbed6PwmOutEP12SingleLegQEIP10InitSwitchPNS0_5TimerE
-                0x000055c4       0x34 ./Walk/SingleLeg.o
-                0x000055c4                SingleLeg::unitize(mbed::PwmOut*, SingleLegQEI*, InitSwitch*, mbed::Timer*)
+                0x00005564       0x34 ./Walk/SingleLeg.o
+                0x00005564                SingleLeg::unitize(mbed::PwmOut*, SingleLegQEI*, InitSwitch*, mbed::Timer*)
  .text._ZN9SingleLeg16set_dependenciesEP6MRMode
-                0x000055f8       0x20 ./Walk/SingleLeg.o
-                0x000055f8                SingleLeg::set_dependencies(MRMode*)
+                0x00005598       0x20 ./Walk/SingleLeg.o
+                0x00005598                SingleLeg::set_dependencies(MRMode*)
+ .text._ZN9SingleLeg13mrmode_updateEv
+                0x000055b8       0x30 ./Walk/SingleLeg.o
+                0x000055b8                SingleLeg::mrmode_update()
  .text._ZN9SingleLeg7move_toEff
-                0x00005618       0x50 ./Walk/SingleLeg.o
-                0x00005618                SingleLeg::move_to(float, float)
+                0x000055e8       0x50 ./Walk/SingleLeg.o
+                0x000055e8                SingleLeg::move_to(float, float)
  .text._ZN9SingleLeg13move_to_angleEf
-                0x00005668       0x68 ./Walk/SingleLeg.o
-                0x00005668                SingleLeg::move_to_angle(float)
+                0x00005638       0x68 ./Walk/SingleLeg.o
+                0x00005638                SingleLeg::move_to_angle(float)
  .text._ZN9SingleLeg12state_updateEv
-                0x000056d0       0x34 ./Walk/SingleLeg.o
-                0x000056d0                SingleLeg::state_update()
+                0x000056a0       0x34 ./Walk/SingleLeg.o
+                0x000056a0                SingleLeg::state_update()
  .text._ZN9SingleLeg8get_dutyEv
-                0x00005704       0x18 ./Walk/SingleLeg.o
-                0x00005704                SingleLeg::get_duty()
+                0x000056d4       0x18 ./Walk/SingleLeg.o
+                0x000056d4                SingleLeg::get_duty()
  .text._ZN9SingleLeg9get_angleEv
-                0x0000571c       0x24 ./Walk/SingleLeg.o
-                0x0000571c                SingleLeg::get_angle()
+                0x000056ec       0x24 ./Walk/SingleLeg.o
+                0x000056ec                SingleLeg::get_angle()
  .text._ZN9SingleLeg7get_encEv
-                0x00005740       0x1c ./Walk/SingleLeg.o
-                0x00005740                SingleLeg::get_enc()
+                0x00005710       0x1c ./Walk/SingleLeg.o
+                0x00005710                SingleLeg::get_enc()
  .text._ZN9SingleLeg6get_swEv
-                0x0000575c       0x1c ./Walk/SingleLeg.o
-                0x0000575c                SingleLeg::get_sw()
+                0x0000572c       0x1c ./Walk/SingleLeg.o
+                0x0000572c                SingleLeg::get_sw()
  .text._ZN9SingleLeg9reset_encEv
-                0x00005778       0x1c ./Walk/SingleLeg.o
-                0x00005778                SingleLeg::reset_enc()
+                0x00005748       0x1c ./Walk/SingleLeg.o
+                0x00005748                SingleLeg::reset_enc()
  .text._ZN9SingleLeg17set_PID_from_fileEPKc
-                0x00005794       0x74 ./Walk/SingleLeg.o
-                0x00005794                SingleLeg::set_PID_from_file(char const*)
+                0x00005764       0x74 ./Walk/SingleLeg.o
+                0x00005764                SingleLeg::set_PID_from_file(char const*)
  .text._ZN9SingleLeg7set_PIDEfff
-                0x00005808       0x2c ./Walk/SingleLeg.o
-                0x00005808                SingleLeg::set_PID(float, float, float)
+                0x000057d8       0x2c ./Walk/SingleLeg.o
+                0x000057d8                SingleLeg::set_PID(float, float, float)
  .text._ZN9SingleLeg10set_limitsEv
-                0x00005834       0x50 ./Walk/SingleLeg.o
-                0x00005834                SingleLeg::set_limits()
+                0x00005804       0x58 ./Walk/SingleLeg.o
+                0x00005804                SingleLeg::set_limits()
  .text._ZN9SingleLeg14set_duty_limitEff
-                0x00005884       0x40 ./Walk/SingleLeg.o
-                0x00005884                SingleLeg::set_duty_limit(float, float)
+                0x0000585c       0x40 ./Walk/SingleLeg.o
+                0x0000585c                SingleLeg::set_duty_limit(float, float)
  .text._ZN9SingleLeg10reset_dutyEv
-                0x000058c4       0x1c ./Walk/SingleLeg.o
-                0x000058c4                SingleLeg::reset_duty()
+                0x0000589c       0x1c ./Walk/SingleLeg.o
+                0x0000589c                SingleLeg::reset_duty()
  .text._ZN3QEIC2E7PinNameS0_S0_iNS_8EncodingE
-                0x000058e0      0x154 ./QEI/QEI.o
-                0x000058e0                QEI::QEI(PinName, PinName, PinName, int, QEI::Encoding)
-                0x000058e0                QEI::QEI(PinName, PinName, PinName, int, QEI::Encoding)
+                0x000058b8      0x154 ./QEI/QEI.o
+                0x000058b8                QEI::QEI(PinName, PinName, PinName, int, QEI::Encoding)
+                0x000058b8                QEI::QEI(PinName, PinName, PinName, int, QEI::Encoding)
  .text._ZN3QEI5resetEv
-                0x00005a34       0x24 ./QEI/QEI.o
-                0x00005a34                QEI::reset()
+                0x00005a0c       0x24 ./QEI/QEI.o
+                0x00005a0c                QEI::reset()
  .text._ZN3QEI9getPulsesEv
-                0x00005a58       0x18 ./QEI/QEI.o
-                0x00005a58                QEI::getPulses()
+                0x00005a30       0x18 ./QEI/QEI.o
+                0x00005a30                QEI::getPulses()
  .text._ZN3QEI6encodeEv
-                0x00005a70      0x14c ./QEI/QEI.o
-                0x00005a70                QEI::encode()
+                0x00005a48      0x14c ./QEI/QEI.o
+                0x00005a48                QEI::encode()
  .text._ZN3QEI5indexEv
-                0x00005bbc       0x20 ./QEI/QEI.o
-                0x00005bbc                QEI::index()
+                0x00005b94       0x20 ./QEI/QEI.o
+                0x00005b94                QEI::index()
  .text._ZN4mbed11InterruptIn4riseI3QEIEEvPT_MS3_FvvE
-                0x00005bdc       0x38 ./QEI/QEI.o
-                0x00005bdc                void mbed::InterruptIn::rise<QEI>(QEI*, void (QEI::*)())
+                0x00005bb4       0x38 ./QEI/QEI.o
+                0x00005bb4                void mbed::InterruptIn::rise<QEI>(QEI*, void (QEI::*)())
  .text._ZN4mbed11InterruptIn4fallI3QEIEEvPT_MS3_FvvE
-                0x00005c14       0x38 ./QEI/QEI.o
-                0x00005c14                void mbed::InterruptIn::fall<QEI>(QEI*, void (QEI::*)())
+                0x00005bec       0x38 ./QEI/QEI.o
+                0x00005bec                void mbed::InterruptIn::fall<QEI>(QEI*, void (QEI::*)())
  .text._ZN4mbed15FunctionPointer6attachI3QEIEEvPT_MS3_FvvE
-                0x00005c4c       0x3c ./QEI/QEI.o
-                0x00005c4c                void mbed::FunctionPointer::attach<QEI>(QEI*, void (QEI::*)())
+                0x00005c24       0x3c ./QEI/QEI.o
+                0x00005c24                void mbed::FunctionPointer::attach<QEI>(QEI*, void (QEI::*)())
  .text._ZN4mbed15FunctionPointer12membercallerI3QEIEEvPvPc
-                0x00005c88       0x54 ./QEI/QEI.o
-                0x00005c88                void mbed::FunctionPointer::membercaller<QEI>(void*, char*)
+                0x00005c60       0x54 ./QEI/QEI.o
+                0x00005c60                void mbed::FunctionPointer::membercaller<QEI>(void*, char*)
  .text._ZN4mbed9DigitalIn4modeE7PinMode
-                0x00005cdc       0x20 ./QEI/QEI_freePin.o
-                0x00005cdc                mbed::DigitalIn::mode(PinMode)
- *fill*         0x00005cfc        0x4 ff
+                0x00005cb4       0x20 ./QEI/QEI_freePin.o
+                0x00005cb4                mbed::DigitalIn::mode(PinMode)
+ *fill*         0x00005cd4        0x4 ff
  .text._Z13pulse_to_radsf
-                0x00005d00       0x38 ./QEI/QEI_freePin.o
-                0x00005d00                pulse_to_rads(float)
+                0x00005cd8       0x38 ./QEI/QEI_freePin.o
+                0x00005cd8                pulse_to_rads(float)
  .text._Z15pulse_to_degreef
-                0x00005d38       0x38 ./QEI/QEI_freePin.o
-                0x00005d38                pulse_to_degree(float)
+                0x00005d10       0x38 ./QEI/QEI_freePin.o
+                0x00005d10                pulse_to_degree(float)
  .text._ZN11QEI_freePinC2E7PinNameS0_f
-                0x00005d70       0x84 ./QEI/QEI_freePin.o
-                0x00005d70                QEI_freePin::QEI_freePin(PinName, PinName, float)
-                0x00005d70                QEI_freePin::QEI_freePin(PinName, PinName, float)
+                0x00005d48       0x84 ./QEI/QEI_freePin.o
+                0x00005d48                QEI_freePin::QEI_freePin(PinName, PinName, float)
+                0x00005d48                QEI_freePin::QEI_freePin(PinName, PinName, float)
  .text._ZN11QEI_freePin9getPulsesEv
-                0x00005df4       0x34 ./QEI/QEI_freePin.o
-                0x00005df4                QEI_freePin::getPulses()
+                0x00005dcc       0x34 ./QEI/QEI_freePin.o
+                0x00005dcc                QEI_freePin::getPulses()
  .text._ZN12SingleLegQEIC2E7PinNameS0_
-                0x00005e28       0x28 ./QEI/SingleLegQEI.o
-                0x00005e28                SingleLegQEI::SingleLegQEI(PinName, PinName)
-                0x00005e28                SingleLegQEI::SingleLegQEI(PinName, PinName)
+                0x00005e00       0x28 ./QEI/SingleLegQEI.o
+                0x00005e00                SingleLegQEI::SingleLegQEI(PinName, PinName)
+                0x00005e00                SingleLegQEI::SingleLegQEI(PinName, PinName)
  .text._ZN12SingleLegQEI8getAngleEv
-                0x00005e50       0x24 ./QEI/SingleLegQEI.o
-                0x00005e50                SingleLegQEI::getAngle()
+                0x00005e28       0x24 ./QEI/SingleLegQEI.o
+                0x00005e28                SingleLegQEI::getAngle()
  .text._ZN12SingleLegQEI9getRadianEv
-                0x00005e74       0x24 ./QEI/SingleLegQEI.o
-                0x00005e74                SingleLegQEI::getRadian()
+                0x00005e4c       0x24 ./QEI/SingleLegQEI.o
+                0x00005e4c                SingleLegQEI::getRadian()
  .text._ZN3PIDC2Ev
-                0x00005e98       0x14 ./PID.o
-                0x00005e98                PID::PID()
-                0x00005e98                PID::PID()
+                0x00005e70       0x14 ./PID.o
+                0x00005e70                PID::PID()
+                0x00005e70                PID::PID()
  .text._ZN3PIDD2Ev
-                0x00005eac       0x14 ./PID.o
-                0x00005eac                PID::~PID()
-                0x00005eac                PID::~PID()
+                0x00005e84       0x14 ./PID.o
+                0x00005e84                PID::~PID()
+                0x00005e84                PID::~PID()
  .text._ZN3PID9set_timerEPN4mbed5TimerE
-                0x00005ec0       0x1c ./PID.o
-                0x00005ec0                PID::set_timer(mbed::Timer*)
+                0x00005e98       0x1c ./PID.o
+                0x00005e98                PID::set_timer(mbed::Timer*)
  .text._ZN3PID7set_PIDEfff
-                0x00005edc       0x38 ./PID.o
-                0x00005edc                PID::set_PID(float, float, float)
+                0x00005eb4       0x38 ./PID.o
+                0x00005eb4                PID::set_PID(float, float, float)
  .text._ZN3PID5startEff
-                0x00005f14       0x68 ./PID.o
-                0x00005f14                PID::start(float, float)
+                0x00005eec       0x68 ./PID.o
+                0x00005eec                PID::start(float, float)
  .text._ZN3PID12param_updateEff
-                0x00005f7c       0xbc ./PID.o
-                0x00005f7c                PID::param_update(float, float)
+                0x00005f54       0xbc ./PID.o
+                0x00005f54                PID::param_update(float, float)
  .text._ZN3PID4calcEff
-                0x00006038       0xe4 ./PID.o
-                0x00006038                PID::calc(float, float)
+                0x00006010       0xe4 ./PID.o
+                0x00006010                PID::calc(float, float)
  .text._ZN3PID6calc_PEv
-                0x0000611c       0x24 ./PID.o
-                0x0000611c                PID::calc_P()
+                0x000060f4       0x24 ./PID.o
+                0x000060f4                PID::calc_P()
  .text._ZN3PID6calc_IEv
-                0x00006140       0x8c ./PID.o
-                0x00006140                PID::calc_I()
+                0x00006118       0x8c ./PID.o
+                0x00006118                PID::calc_I()
  .text._ZN3PID6calc_DEv
-                0x000061cc       0x88 ./PID.o
-                0x000061cc                PID::calc_D()
+                0x000061a4       0x88 ./PID.o
+                0x000061a4                PID::calc_D()
  .text._ZN3PID15param_set_limitEff
-                0x00006254       0x24 ./PID.o
-                0x00006254                PID::param_set_limit(float, float)
+                0x0000622c       0x24 ./PID.o
+                0x0000622c                PID::param_set_limit(float, float)
  .text._ZN3PID11param_limitEv
-                0x00006278       0x50 ./PID.o
-                0x00006278                PID::param_limit()
+                0x00006250       0x50 ./PID.o
+                0x00006250                PID::param_limit()
  .text._ZN3PID11get_opr_nxtEv
-                0x000062c8       0x18 ./PID.o
-                0x000062c8                PID::get_opr_nxt()
+                0x000062a0       0x18 ./PID.o
+                0x000062a0                PID::get_opr_nxt()
  .text._ZN3PID13reset_opr_nxtEf
-                0x000062e0       0x48 ./PID.o
-                0x000062e0                PID::reset_opr_nxt(float)
+                0x000062b8       0x48 ./PID.o
+                0x000062b8                PID::reset_opr_nxt(float)
  .text._ZN4mbed10DigitalOutaSEi
-                0x00006328       0x1c ./Pins.o
-                0x00006328                mbed::DigitalOut::operator=(int)
+                0x00006300       0x1c ./Pins.o
+                0x00006300                mbed::DigitalOut::operator=(int)
  .text._ZN4mbed6PwmOutC2E7PinName
-                0x00006344       0x20 ./Pins.o
-                0x00006344                mbed::PwmOut::PwmOut(PinName)
-                0x00006344                mbed::PwmOut::PwmOut(PinName)
+                0x0000631c       0x20 ./Pins.o
+                0x0000631c                mbed::PwmOut::PwmOut(PinName)
+                0x0000631c                mbed::PwmOut::PwmOut(PinName)
  .text._ZN4mbed6PwmOut9period_usEi
-                0x00006364       0x1c ./Pins.o
-                0x00006364                mbed::PwmOut::period_us(int)
+                0x0000633c       0x1c ./Pins.o
+                0x0000633c                mbed::PwmOut::period_us(int)
  .text._ZN10InitSwitchC2E7PinNameb
-                0x00006380       0x28 ./Pins.o
-                0x00006380                InitSwitch::InitSwitch(PinName, bool)
-                0x00006380                InitSwitch::InitSwitch(PinName, bool)
+                0x00006358       0x28 ./Pins.o
+                0x00006358                InitSwitch::InitSwitch(PinName, bool)
+                0x00006358                InitSwitch::InitSwitch(PinName, bool)
  .text._Z11AdjustCyclei
-                0x000063a8       0x80 ./Pins.o
-                0x000063a8                AdjustCycle(int)
+                0x00006380       0x80 ./Pins.o
+                0x00006380                AdjustCycle(int)
  .text._Z9initPartsv
-                0x00006428       0x90 ./Pins.o
-                0x00006428                initParts()
+                0x00006400       0x90 ./Pins.o
+                0x00006400                initParts()
  .text._ZN3QEID2Ev
-                0x000064b8       0x30 ./Pins.o
-                0x000064b8                QEI::~QEI()
-                0x000064b8                QEI::~QEI()
+                0x00006490       0x30 ./Pins.o
+                0x00006490                QEI::~QEI()
+                0x00006490                QEI::~QEI()
  .text._ZN11QEI_freePinD2Ev
-                0x000064e8       0x1c ./Pins.o
-                0x000064e8                QEI_freePin::~QEI_freePin()
-                0x000064e8                QEI_freePin::~QEI_freePin()
+                0x000064c0       0x1c ./Pins.o
+                0x000064c0                QEI_freePin::~QEI_freePin()
+                0x000064c0                QEI_freePin::~QEI_freePin()
  .text._ZN12SingleLegQEID2Ev
-                0x00006504       0x1c ./Pins.o
-                0x00006504                SingleLegQEI::~SingleLegQEI()
-                0x00006504                SingleLegQEI::~SingleLegQEI()
+                0x000064dc       0x1c ./Pins.o
+                0x000064dc                SingleLegQEI::~SingleLegQEI()
+                0x000064dc                SingleLegQEI::~SingleLegQEI()
  .text._Z41__static_initialization_and_destruction_0ii
-                0x00006520      0x1c8 ./Pins.o
+                0x000064f8      0x1c8 ./Pins.o
  .text._GLOBAL__sub_I_can
-                0x000066e8       0x10 ./Pins.o
+                0x000066c0       0x10 ./Pins.o
  .text._Z5limitddd
-                0x000066f8       0x4c ./functions.o
-                0x000066f8                limit(double, double, double)
+                0x000066d0       0x4c ./functions.o
+                0x000066d0                limit(double, double, double)
  .text._Z5sqrt2ff
-                0x00006744       0x54 ./functions.o
-                0x00006744                sqrt2(float, float)
+                0x0000671c       0x54 ./functions.o
+                0x0000671c                sqrt2(float, float)
  .text._Z11cos_formulafff
-                0x00006798       0x6c ./functions.o
-                0x00006798                cos_formula(float, float, float)
+                0x00006770       0x6c ./functions.o
+                0x00006770                cos_formula(float, float, float)
  .text._ZN4mbed10CANMessageC2Ev
-                0x00006804       0x40 ./main.o
-                0x00006804                mbed::CANMessage::CANMessage()
-                0x00006804                mbed::CANMessage::CANMessage()
+                0x000067dc       0x40 ./main.o
+                0x000067dc                mbed::CANMessage::CANMessage()
+                0x000067dc                mbed::CANMessage::CANMessage()
  .text._ZN4mbed15LocalFileSystemC2EPKc
-                0x00006844       0x28 ./main.o
-                0x00006844                mbed::LocalFileSystem::LocalFileSystem(char const*)
-                0x00006844                mbed::LocalFileSystem::LocalFileSystem(char const*)
- .text.main     0x0000686c      0x308 ./main.o
-                0x0000686c                main
+                0x0000681c       0x28 ./main.o
+                0x0000681c                mbed::LocalFileSystem::LocalFileSystem(char const*)
+                0x0000681c                mbed::LocalFileSystem::LocalFileSystem(char const*)
+ .text.main     0x00006844      0x308 ./main.o
+                0x00006844                main
  .text._Z7setLegsv
-                0x00006b74      0x110 ./main.o
-                0x00006b74                setLegs()
+                0x00006b4c      0x110 ./main.o
+                0x00006b4c                setLegs()
  .text._Z10set_limitsv
-                0x00006c84       0x50 ./main.o
-                0x00006c84                set_limits()
+                0x00006c5c       0x74 ./main.o
+                0x00006c5c                set_limits()
  .text._Z9set_cyclePfS_
-                0x00006cd4       0x98 ./main.o
-                0x00006cd4                set_cycle(float*, float*)
+                0x00006cd0       0x9c ./main.o
+                0x00006cd0                set_cycle(float*, float*)
  .text._Z6CANrcvv
                 0x00006d6c       0x98 ./main.o
                 0x00006d6c                CANrcv()
@@ -10957,7 +10978,7 @@ END GROUP
  *(.bss.$RamAHB32*)
                 0x2007c000                . = ALIGN (0x4)
 
-.bss            0x10000d28      0xf1c
+.bss            0x10000d28      0xf7c
                 0x10000d28                _bss = .
  *(.bss*)
  .bss.can_irq_ids
@@ -11040,59 +11061,59 @@ END GROUP
  .bss.timer_RL  0x100016c8       0x14 ./main.o
                 0x100016c8                timer_RL
  *fill*         0x100016dc        0x4 
- .bss.RRf       0x100016e0       0xd0 ./main.o
+ .bss.RRf       0x100016e0       0xd8 ./main.o
                 0x100016e0                RRf
- .bss.RRr       0x100017b0       0xd0 ./main.o
-                0x100017b0                RRr
- .bss.RR        0x10001880       0x84 ./main.o
-                0x10001880                RR
- *fill*         0x10001904        0x4 
- .bss.RLf       0x10001908       0xd0 ./main.o
-                0x10001908                RLf
- .bss.RLr       0x100019d8       0xd0 ./main.o
-                0x100019d8                RLr
- .bss.RL        0x10001aa8       0x84 ./main.o
-                0x10001aa8                RL
- .bss.fw_RR     0x10001b2c       0x38 ./main.o
-                0x10001b2c                fw_RR
- .bss.fw_RL     0x10001b64       0x38 ./main.o
-                0x10001b64                fw_RL
- .bss.rcvMsg    0x10001b9c       0x10 ./main.o
-                0x10001b9c                rcvMsg
+ .bss.RRr       0x100017b8       0xd8 ./main.o
+                0x100017b8                RRr
+ .bss.RR        0x10001890       0xa4 ./main.o
+                0x10001890                RR
+ *fill*         0x10001934        0x4 
+ .bss.RLf       0x10001938       0xd8 ./main.o
+                0x10001938                RLf
+ .bss.RLr       0x10001a10       0xd8 ./main.o
+                0x10001a10                RLr
+ .bss.RL        0x10001ae8       0xa4 ./main.o
+                0x10001ae8                RL
+ .bss.fw_RR     0x10001b8c       0x38 ./main.o
+                0x10001b8c                fw_RR
+ .bss.fw_RL     0x10001bc4       0x38 ./main.o
+                0x10001bc4                fw_RL
+ .bss.rcvMsg    0x10001bfc       0x10 ./main.o
+                0x10001bfc                rcvMsg
  .bss.can_receiver
-                0x10001bac       0x28 ./main.o
-                0x10001bac                can_receiver
- .bss.MRmode    0x10001bd4        0xc ./main.o
-                0x10001bd4                MRmode
+                0x10001c0c       0x28 ./main.o
+                0x10001c0c                can_receiver
+ .bss.MRmode    0x10001c34        0xc ./main.o
+                0x10001c34                MRmode
  .bss.__malloc_max_total_mem
-                0x10001be0        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
-                0x10001be0                __malloc_max_total_mem
+                0x10001c40        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
+                0x10001c40                __malloc_max_total_mem
  .bss.__malloc_max_sbrked_mem
-                0x10001be4        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
-                0x10001be4                __malloc_max_sbrked_mem
+                0x10001c44        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
+                0x10001c44                __malloc_max_sbrked_mem
  .bss.__malloc_top_pad
-                0x10001be8        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
-                0x10001be8                __malloc_top_pad
+                0x10001c48        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
+                0x10001c48                __malloc_top_pad
  .bss.__malloc_current_mallinfo
-                0x10001bec       0x28 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
-                0x10001bec                __malloc_current_mallinfo
+                0x10001c4c       0x28 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
+                0x10001c4c                __malloc_current_mallinfo
  .bss.__end_of_heap
-                0x10001c14        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
-                0x10001c14                __end_of_heap
- .bss           0x10001c18       0x1c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\crtbegin.o
+                0x10001c74        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
+                0x10001c74                __end_of_heap
+ .bss           0x10001c78       0x1c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\crtbegin.o
  *(COMMON)
- COMMON         0x10001c34        0xc ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/serial_api.o
-                0x10001c34                stdio_uart
- COMMON         0x10001c40        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reent.o)
-                0x10001c40                errno
-                0x10001c44                . = ALIGN (0x4)
-                0x10001c44                _ebss = .
+ COMMON         0x10001c94        0xc ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/serial_api.o
+                0x10001c94                stdio_uart
+ COMMON         0x10001ca0        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reent.o)
+                0x10001ca0                errno
+                0x10001ca4                . = ALIGN (0x4)
+                0x10001ca4                _ebss = .
                 [!provide]                PROVIDE (end, .)
-                0x10001c44                PROVIDE (_pvHeapStart, .)
+                0x10001ca4                PROVIDE (_pvHeapStart, .)
                 0x10008000                PROVIDE (_vStackTop, (__top_RamLoc32 - 0x0))
 OUTPUT(RearLegs_2.0.axf elf32-littlearm)
 
-.debug_info     0x00000000    0x4d45d
+.debug_info     0x00000000    0x4d926
  .debug_info    0x00000000     0x1f49 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o
  .debug_info    0x00001f49      0xc14 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_api.o
  .debug_info    0x00002b5d     0x1619 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_irq_api.o
@@ -11132,20 +11153,20 @@ OUTPUT(RearLegs_2.0.axf elf32-littlearm)
  .debug_info    0x0002e8cc     0x1820 ./Walk/ClockTimer.o
  .debug_info    0x000300ec     0x24ac ./Walk/ForwardKinematics.o
  .debug_info    0x00032598     0x2721 ./Walk/LegPID.o
- .debug_info    0x00034cb9     0x1b95 ./Walk/MRMode.o
- .debug_info    0x0003684e     0x28cc ./Walk/ParallelLeg.o
- .debug_info    0x0003911a     0x38cf ./Walk/SingleLeg.o
- .debug_info    0x0003c9e9     0x2318 ./QEI/QEI.o
- .debug_info    0x0003ed01     0x2148 ./QEI/QEI_freePin.o
- .debug_info    0x00040e49     0x20f8 ./QEI/SingleLegQEI.o
- .debug_info    0x00042f41     0x1e00 ./PID.o
- .debug_info    0x00044d41     0x2b04 ./Pins.o
- .debug_info    0x00047845     0x167c ./functions.o
- .debug_info    0x00048ec1     0x440e ./main.o
- .debug_info    0x0004d2cf      0x124 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
- .debug_info    0x0004d3f3       0x6a c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
+ .debug_info    0x00034cb9     0x1b96 ./Walk/MRMode.o
+ .debug_info    0x0003684f     0x2bdb ./Walk/ParallelLeg.o
+ .debug_info    0x0003942a     0x3919 ./Walk/SingleLeg.o
+ .debug_info    0x0003cd43     0x2318 ./QEI/QEI.o
+ .debug_info    0x0003f05b     0x2148 ./QEI/QEI_freePin.o
+ .debug_info    0x000411a3     0x20f8 ./QEI/SingleLegQEI.o
+ .debug_info    0x0004329b     0x1e00 ./PID.o
+ .debug_info    0x0004509b     0x2b04 ./Pins.o
+ .debug_info    0x00047b9f     0x167c ./functions.o
+ .debug_info    0x0004921b     0x457d ./main.o
+ .debug_info    0x0004d798      0x124 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
+ .debug_info    0x0004d8bc       0x6a c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
 
-.debug_abbrev   0x00000000     0xa136
+.debug_abbrev   0x00000000     0xa12f
  .debug_abbrev  0x00000000      0x40e ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o
  .debug_abbrev  0x0000040e      0x179 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_api.o
  .debug_abbrev  0x00000587      0x315 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_irq_api.o
@@ -11185,20 +11206,20 @@ OUTPUT(RearLegs_2.0.axf elf32-littlearm)
  .debug_abbrev  0x0000682e      0x36d ./Walk/ClockTimer.o
  .debug_abbrev  0x00006b9b      0x49d ./Walk/ForwardKinematics.o
  .debug_abbrev  0x00007038      0x424 ./Walk/LegPID.o
- .debug_abbrev  0x0000745c      0x3ea ./Walk/MRMode.o
- .debug_abbrev  0x00007846      0x46d ./Walk/ParallelLeg.o
- .debug_abbrev  0x00007cb3      0x540 ./Walk/SingleLeg.o
- .debug_abbrev  0x000081f3      0x48c ./QEI/QEI.o
- .debug_abbrev  0x0000867f      0x43b ./QEI/QEI_freePin.o
- .debug_abbrev  0x00008aba      0x3e2 ./QEI/SingleLegQEI.o
- .debug_abbrev  0x00008e9c      0x389 ./PID.o
- .debug_abbrev  0x00009225      0x4eb ./Pins.o
- .debug_abbrev  0x00009710      0x291 ./functions.o
- .debug_abbrev  0x000099a1      0x664 ./main.o
- .debug_abbrev  0x0000a005       0xcf c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
- .debug_abbrev  0x0000a0d4       0x62 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
+ .debug_abbrev  0x0000745c      0x3d4 ./Walk/MRMode.o
+ .debug_abbrev  0x00007830      0x47c ./Walk/ParallelLeg.o
+ .debug_abbrev  0x00007cac      0x540 ./Walk/SingleLeg.o
+ .debug_abbrev  0x000081ec      0x48c ./QEI/QEI.o
+ .debug_abbrev  0x00008678      0x43b ./QEI/QEI_freePin.o
+ .debug_abbrev  0x00008ab3      0x3e2 ./QEI/SingleLegQEI.o
+ .debug_abbrev  0x00008e95      0x389 ./PID.o
+ .debug_abbrev  0x0000921e      0x4eb ./Pins.o
+ .debug_abbrev  0x00009709      0x291 ./functions.o
+ .debug_abbrev  0x0000999a      0x664 ./main.o
+ .debug_abbrev  0x00009ffe       0xcf c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
+ .debug_abbrev  0x0000a0cd       0x62 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
 
-.debug_aranges  0x00000000     0x1568
+.debug_aranges  0x00000000     0x15b8
  .debug_aranges
                 0x00000000       0xc8 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o
  .debug_aranges
@@ -11280,29 +11301,29 @@ OUTPUT(RearLegs_2.0.axf elf32-littlearm)
  .debug_aranges
                 0x00000f80       0x50 ./Walk/MRMode.o
  .debug_aranges
-                0x00000fd0      0x128 ./Walk/ParallelLeg.o
+                0x00000fd0      0x170 ./Walk/ParallelLeg.o
  .debug_aranges
-                0x000010f8      0x100 ./Walk/SingleLeg.o
+                0x00001140      0x108 ./Walk/SingleLeg.o
  .debug_aranges
-                0x000011f8       0x70 ./QEI/QEI.o
+                0x00001248       0x70 ./QEI/QEI.o
  .debug_aranges
-                0x00001268       0x48 ./QEI/QEI_freePin.o
+                0x000012b8       0x48 ./QEI/QEI_freePin.o
  .debug_aranges
-                0x000012b0       0x30 ./QEI/SingleLegQEI.o
+                0x00001300       0x30 ./QEI/SingleLegQEI.o
  .debug_aranges
-                0x000012e0       0xa8 ./PID.o
+                0x00001330       0xa8 ./PID.o
  .debug_aranges
-                0x00001388       0xb8 ./Pins.o
+                0x000013d8       0xb8 ./Pins.o
  .debug_aranges
-                0x00001440       0x38 ./functions.o
+                0x00001490       0x38 ./functions.o
  .debug_aranges
-                0x00001478       0xb0 ./main.o
+                0x000014c8       0xb0 ./main.o
  .debug_aranges
-                0x00001528       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
+                0x00001578       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
  .debug_aranges
-                0x00001548       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
+                0x00001598       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
 
-.debug_ranges   0x00000000     0x1268
+.debug_ranges   0x00000000     0x12b8
  .debug_ranges  0x00000000       0xb8 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o
  .debug_ranges  0x000000b8       0x28 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_api.o
  .debug_ranges  0x000000e0       0x48 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_irq_api.o
@@ -11343,19 +11364,19 @@ OUTPUT(RearLegs_2.0.axf elf32-littlearm)
  .debug_ranges  0x00000cc8       0x48 ./Walk/ForwardKinematics.o
  .debug_ranges  0x00000d10       0x30 ./Walk/LegPID.o
  .debug_ranges  0x00000d40       0x40 ./Walk/MRMode.o
- .debug_ranges  0x00000d80      0x118 ./Walk/ParallelLeg.o
- .debug_ranges  0x00000e98       0xf0 ./Walk/SingleLeg.o
- .debug_ranges  0x00000f88       0x60 ./QEI/QEI.o
- .debug_ranges  0x00000fe8       0x38 ./QEI/QEI_freePin.o
- .debug_ranges  0x00001020       0x20 ./QEI/SingleLegQEI.o
- .debug_ranges  0x00001040       0x98 ./PID.o
- .debug_ranges  0x000010d8       0xa8 ./Pins.o
- .debug_ranges  0x00001180       0x28 ./functions.o
- .debug_ranges  0x000011a8       0xa0 ./main.o
- .debug_ranges  0x00001248       0x10 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
- .debug_ranges  0x00001258       0x10 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
+ .debug_ranges  0x00000d80      0x160 ./Walk/ParallelLeg.o
+ .debug_ranges  0x00000ee0       0xf8 ./Walk/SingleLeg.o
+ .debug_ranges  0x00000fd8       0x60 ./QEI/QEI.o
+ .debug_ranges  0x00001038       0x38 ./QEI/QEI_freePin.o
+ .debug_ranges  0x00001070       0x20 ./QEI/SingleLegQEI.o
+ .debug_ranges  0x00001090       0x98 ./PID.o
+ .debug_ranges  0x00001128       0xa8 ./Pins.o
+ .debug_ranges  0x000011d0       0x28 ./functions.o
+ .debug_ranges  0x000011f8       0xa0 ./main.o
+ .debug_ranges  0x00001298       0x10 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
+ .debug_ranges  0x000012a8       0x10 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
 
-.debug_macro    0x00000000     0xe240
+.debug_macro    0x00000000     0xe26a
  .debug_macro   0x00000000      0x2de ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o
  .debug_macro   0x000002de      0x1e1 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o
  .debug_macro   0x000004bf       0x16 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o
@@ -11444,22 +11465,22 @@ OUTPUT(RearLegs_2.0.axf elf32-littlearm)
  .debug_macro   0x0000a555       0x10 ./Walk/ForwardKinematics.o
  .debug_macro   0x0000a565      0x571 ./Walk/LegPID.o
  .debug_macro   0x0000aad6       0x1c ./Walk/LegPID.o
- .debug_macro   0x0000aaf2      0x566 ./Walk/MRMode.o
- .debug_macro   0x0000b058      0x583 ./Walk/ParallelLeg.o
- .debug_macro   0x0000b5db       0x22 ./Walk/ParallelLeg.o
- .debug_macro   0x0000b5fd      0x5c7 ./Walk/SingleLeg.o
- .debug_macro   0x0000bbc4       0x1c ./Walk/SingleLeg.o
- .debug_macro   0x0000bbe0      0x54d ./QEI/QEI.o
- .debug_macro   0x0000c12d       0x19 ./QEI/QEI.o
- .debug_macro   0x0000c146      0x55b ./QEI/QEI_freePin.o
- .debug_macro   0x0000c6a1      0x567 ./QEI/SingleLegQEI.o
- .debug_macro   0x0000cc08      0x54b ./PID.o
- .debug_macro   0x0000d153       0x16 ./PID.o
- .debug_macro   0x0000d169      0x578 ./Pins.o
- .debug_macro   0x0000d6e1      0x546 ./functions.o
- .debug_macro   0x0000dc27      0x619 ./main.o
+ .debug_macro   0x0000aaf2      0x578 ./Walk/MRMode.o
+ .debug_macro   0x0000b06a      0x583 ./Walk/ParallelLeg.o
+ .debug_macro   0x0000b5ed       0x3a ./Walk/ParallelLeg.o
+ .debug_macro   0x0000b627      0x5c7 ./Walk/SingleLeg.o
+ .debug_macro   0x0000bbee       0x1c ./Walk/SingleLeg.o
+ .debug_macro   0x0000bc0a      0x54d ./QEI/QEI.o
+ .debug_macro   0x0000c157       0x19 ./QEI/QEI.o
+ .debug_macro   0x0000c170      0x55b ./QEI/QEI_freePin.o
+ .debug_macro   0x0000c6cb      0x567 ./QEI/SingleLegQEI.o
+ .debug_macro   0x0000cc32      0x54b ./PID.o
+ .debug_macro   0x0000d17d       0x16 ./PID.o
+ .debug_macro   0x0000d193      0x578 ./Pins.o
+ .debug_macro   0x0000d70b      0x546 ./functions.o
+ .debug_macro   0x0000dc51      0x619 ./main.o
 
-.debug_line     0x00000000    0x1b238
+.debug_line     0x00000000    0x1b3f9
  .debug_line    0x00000000      0x91b ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o
  .debug_line    0x0000091b      0x50b ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_api.o
  .debug_line    0x00000e26      0x7a8 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_irq_api.o
@@ -11499,20 +11520,20 @@ OUTPUT(RearLegs_2.0.axf elf32-littlearm)
  .debug_line    0x00010f44      0xaf1 ./Walk/ClockTimer.o
  .debug_line    0x00011a35      0xc61 ./Walk/ForwardKinematics.o
  .debug_line    0x00012696      0xbd9 ./Walk/LegPID.o
- .debug_line    0x0001326f      0xb74 ./Walk/MRMode.o
- .debug_line    0x00013de3      0xf05 ./Walk/ParallelLeg.o
- .debug_line    0x00014ce8      0xeb7 ./Walk/SingleLeg.o
- .debug_line    0x00015b9f      0xbd9 ./QEI/QEI.o
- .debug_line    0x00016778      0xb1e ./QEI/QEI_freePin.o
- .debug_line    0x00017296      0xb65 ./QEI/SingleLegQEI.o
- .debug_line    0x00017dfb      0xc21 ./PID.o
- .debug_line    0x00018a1c      0xc75 ./Pins.o
- .debug_line    0x00019691      0xb03 ./functions.o
- .debug_line    0x0001a194      0xf56 ./main.o
- .debug_line    0x0001b0ea      0x101 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
- .debug_line    0x0001b1eb       0x4d c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
+ .debug_line    0x0001326f      0xb75 ./Walk/MRMode.o
+ .debug_line    0x00013de4     0x10a8 ./Walk/ParallelLeg.o
+ .debug_line    0x00014e8c      0xece ./Walk/SingleLeg.o
+ .debug_line    0x00015d5a      0xbd9 ./QEI/QEI.o
+ .debug_line    0x00016933      0xb1e ./QEI/QEI_freePin.o
+ .debug_line    0x00017451      0xb65 ./QEI/SingleLegQEI.o
+ .debug_line    0x00017fb6      0xc21 ./PID.o
+ .debug_line    0x00018bd7      0xc75 ./Pins.o
+ .debug_line    0x0001984c      0xb03 ./functions.o
+ .debug_line    0x0001a34f      0xf5c ./main.o
+ .debug_line    0x0001b2ab      0x101 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
+ .debug_line    0x0001b3ac       0x4d c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
 
-.debug_str      0x00000000    0x18402
+.debug_str      0x00000000    0x18706
  .debug_str     0x00000000     0xe187 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o
                                0xe4f9 (size before relaxing)
  .debug_str     0x0000e187      0x209 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_api.o
@@ -11591,29 +11612,29 @@ OUTPUT(RearLegs_2.0.axf elf32-littlearm)
                               0x109fb (size before relaxing)
  .debug_str     0x0001689a      0x31a ./Walk/LegPID.o
                               0x10b37 (size before relaxing)
- .debug_str     0x00016bb4      0x2b0 ./Walk/MRMode.o
-                              0x103c0 (size before relaxing)
- .debug_str     0x00016e64      0x743 ./Walk/ParallelLeg.o
-                              0x10cf0 (size before relaxing)
- .debug_str     0x000175a7      0x5de ./Walk/SingleLeg.o
-                              0x118f9 (size before relaxing)
- .debug_str     0x00017b85      0x17f ./QEI/QEI.o
+ .debug_str     0x00016bb4      0x2e0 ./Walk/MRMode.o
+                              0x103f0 (size before relaxing)
+ .debug_str     0x00016e94      0x9f8 ./Walk/ParallelLeg.o
+                              0x10faa (size before relaxing)
+ .debug_str     0x0001788c      0x5fd ./Walk/SingleLeg.o
+                              0x1192f (size before relaxing)
+ .debug_str     0x00017e89      0x17f ./QEI/QEI.o
                               0x10772 (size before relaxing)
- .debug_str     0x00017d04       0x83 ./QEI/QEI_freePin.o
+ .debug_str     0x00018008       0x83 ./QEI/QEI_freePin.o
                               0x10705 (size before relaxing)
- .debug_str     0x00017d87       0x38 ./QEI/SingleLegQEI.o
+ .debug_str     0x0001808b       0x38 ./QEI/SingleLegQEI.o
                               0x1077d (size before relaxing)
- .debug_str     0x00017dbf       0x45 ./PID.o
+ .debug_str     0x000180c3       0x45 ./PID.o
                               0x1030a (size before relaxing)
- .debug_str     0x00017e04      0x1fe ./Pins.o
+ .debug_str     0x00018108      0x1fe ./Pins.o
                               0x10d90 (size before relaxing)
- .debug_str     0x00018002       0x59 ./functions.o
+ .debug_str     0x00018306       0x59 ./functions.o
                                0xff9e (size before relaxing)
- .debug_str     0x0001805b      0x1fe ./main.o
-                              0x1265d (size before relaxing)
- .debug_str     0x00018259      0x184 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
+ .debug_str     0x0001835f      0x1fe ./main.o
+                              0x12902 (size before relaxing)
+ .debug_str     0x0001855d      0x184 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
                                 0x229 (size before relaxing)
- .debug_str     0x000183dd       0x25 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
+ .debug_str     0x000186e1       0x25 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
                                 0x16b (size before relaxing)
 
 .comment        0x00000000       0xdc
@@ -12022,7 +12043,7 @@ OUTPUT(RearLegs_2.0.axf elf32-littlearm)
  .ARM.attributes
                 0x00001e87       0x1d c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunsdfsi.o)
 
-.debug_frame    0x00000000     0x73ec
+.debug_frame    0x00000000     0x7580
  .debug_frame   0x00000000      0x364 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o
  .debug_frame   0x00000364       0xa4 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_api.o
  .debug_frame   0x00000408      0x140 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_irq_api.o
@@ -12063,120 +12084,120 @@ OUTPUT(RearLegs_2.0.axf elf32-littlearm)
  .debug_frame   0x000036c4      0x15c ./Walk/ForwardKinematics.o
  .debug_frame   0x00003820       0xcc ./Walk/LegPID.o
  .debug_frame   0x000038ec      0x124 ./Walk/MRMode.o
- .debug_frame   0x00003a10      0x558 ./Walk/ParallelLeg.o
- .debug_frame   0x00003f68      0x44c ./Walk/SingleLeg.o
- .debug_frame   0x000043b4      0x1b0 ./QEI/QEI.o
- .debug_frame   0x00004564       0xf4 ./QEI/QEI_freePin.o
- .debug_frame   0x00004658       0x7c ./QEI/SingleLegQEI.o
- .debug_frame   0x000046d4      0x2d8 ./PID.o
- .debug_frame   0x000049ac      0x2ac ./Pins.o
- .debug_frame   0x00004c58       0xb0 ./functions.o
- .debug_frame   0x00004d08      0x2c4 ./main.o
- .debug_frame   0x00004fcc       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00004ff8       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x00005030       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-errno.o)
- .debug_frame   0x00005050       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fclose.o)
- .debug_frame   0x00005094       0x6c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fflush.o)
- .debug_frame   0x00005100       0x58 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fgetc.o)
- .debug_frame   0x00005158      0x124 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-findfp.o)
- .debug_frame   0x0000527c       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fopen.o)
- .debug_frame   0x000052d0       0x74 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fprintf.o)
- .debug_frame   0x00005344       0x74 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-freer.o)
- .debug_frame   0x000053b8       0x74 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fscanf.o)
- .debug_frame   0x0000542c       0x3c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fseek.o)
- .debug_frame   0x00005468       0x60 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fseeko.o)
- .debug_frame   0x000054c8       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fstatr.o)
- .debug_frame   0x000054f4       0x68 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fvwrite.o)
- .debug_frame   0x0000555c       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fwalk.o)
- .debug_frame   0x000055b0       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-init.o)
- .debug_frame   0x000055dc       0x68 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-makebuf.o)
- .debug_frame   0x00005644       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-malloc.o)
- .debug_frame   0x00005674       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
- .debug_frame   0x000056c8       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memchr-stub.o)
- .debug_frame   0x000056fc       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memmove.o)
- .debug_frame   0x0000572c       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
- .debug_frame   0x00005760       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mlock.o)
- .debug_frame   0x00005790       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-openr.o)
- .debug_frame   0x000057bc       0x58 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reallocr.o)
- .debug_frame   0x00005814       0x58 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reent.o)
- .debug_frame   0x0000586c       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-refill.o)
- .debug_frame   0x000058ac       0x3c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-rget.o)
- .debug_frame   0x000058e8       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sbrkr.o)
- .debug_frame   0x00005914       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-setbuf.o)
- .debug_frame   0x00005934       0x50 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-setvbuf.o)
- .debug_frame   0x00005984       0x84 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sprintf.o)
- .debug_frame   0x00005a08       0x88 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sscanf.o)
- .debug_frame   0x00005a90       0x88 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-stdio.o)
- .debug_frame   0x00005b18       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strcmp.o)
- .debug_frame   0x00005b4c       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strlen-stub.o)
- .debug_frame   0x00005b6c       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strncmp.o)
- .debug_frame   0x00005bc0       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
- .debug_frame   0x00005c04       0x50 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfscanf.o)
- .debug_frame   0x00005c54       0x88 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vfprintf.o)
- .debug_frame   0x00005cdc       0xbc c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vfscanf.o)
- .debug_frame   0x00005d98       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wbuf.o)
- .debug_frame   0x00005dd8       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-writer.o)
- .debug_frame   0x00005e04       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wsetup.o)
- .debug_frame   0x00005e30       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-closer.o)
- .debug_frame   0x00005e5c       0x84 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-dtoa.o)
- .debug_frame   0x00005ee0       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-flags.o)
- .debug_frame   0x00005f18       0x6c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fread.o)
- .debug_frame   0x00005f84       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-isattyr.o)
- .debug_frame   0x00005fb0       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-iswspace.o)
- .debug_frame   0x00005fd0       0x9c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-locale.o)
- .debug_frame   0x0000606c       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-lseekr.o)
- .debug_frame   0x00006098       0x68 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mbrtowc.o)
- .debug_frame   0x00006100       0x58 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mbtowc_r.o)
- .debug_frame   0x00006158      0x264 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
- .debug_frame   0x000063bc       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-readr.o)
- .debug_frame   0x000063e8       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sccl.o)
- .debug_frame   0x0000642c       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sf_nan.o)
- .debug_frame   0x0000644c       0x94 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strtod.o)
- .debug_frame   0x000064e0       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strtol.o)
- .debug_frame   0x00006534       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strtoll_r.o)
- .debug_frame   0x00006574       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strtoul.o)
- .debug_frame   0x000065c8       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strtoull_r.o)
- .debug_frame   0x00006608       0x78 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfiprintf.o)
- .debug_frame   0x00006680       0xd8 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfiscanf.o)
- .debug_frame   0x00006758       0x6c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-ungetc.o)
- .debug_frame   0x000067c4       0xc8 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vfiprintf.o)
- .debug_frame   0x0000688c       0x28 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-callocr.o)
- .debug_frame   0x000068b4       0x88 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fputwc.o)
- .debug_frame   0x0000693c       0x84 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-gdtoa-gethex.o)
- .debug_frame   0x000069c0       0x70 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-gdtoa-hexnan.o)
- .debug_frame   0x00006a30       0x60 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wcrtomb.o)
- .debug_frame   0x00006a90       0x48 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wctomb_r.o)
- .debug_frame   0x00006ad8       0xdc c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libstdc++.a(si_class_type_info.o)
- .debug_frame   0x00006bb4       0xe0 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libstdc++.a(vmi_class_type_info.o)
- .debug_frame   0x00006c94       0x84 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libstdc++.a(tinfo.o)
- .debug_frame   0x00006d18       0xe4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libstdc++.a(class_type_info.o)
- .debug_frame   0x00006dfc       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_cos.o)
- .debug_frame   0x00006e34       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_fabs.o)
- .debug_frame   0x00006e54       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_floor.o)
- .debug_frame   0x00006e88       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_sin.o)
- .debug_frame   0x00006ec0       0x3c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_tan.o)
- .debug_frame   0x00006efc       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-w_acos.o)
- .debug_frame   0x00006f3c       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-w_atan2.o)
- .debug_frame   0x00006f5c       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-w_pow.o)
- .debug_frame   0x00006fa8       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-w_sqrt.o)
- .debug_frame   0x00006fec       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-e_acos.o)
- .debug_frame   0x00007024       0x48 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-e_atan2.o)
- .debug_frame   0x0000706c       0x68 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-e_pow.o)
- .debug_frame   0x000070d4       0x48 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-e_rem_pio2.o)
- .debug_frame   0x0000711c       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-e_sqrt.o)
- .debug_frame   0x0000714c       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-k_cos.o)
- .debug_frame   0x00007198       0x50 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-k_rem_pio2.o)
- .debug_frame   0x000071e8       0x48 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-k_sin.o)
- .debug_frame   0x00007230       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-k_tan.o)
- .debug_frame   0x0000727c       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_atan.o)
- .debug_frame   0x000072b4       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_finite.o)
- .debug_frame   0x000072d4       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_matherr.o)
- .debug_frame   0x000072f4       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_nan.o)
- .debug_frame   0x00007314       0x3c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_rint.o)
- .debug_frame   0x00007350       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_scalbn.o)
- .debug_frame   0x00007380       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_copysign.o)
- .debug_frame   0x000073a0       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
- .debug_frame   0x000073cc       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
+ .debug_frame   0x00003a10      0x6c8 ./Walk/ParallelLeg.o
+ .debug_frame   0x000040d8      0x470 ./Walk/SingleLeg.o
+ .debug_frame   0x00004548      0x1b0 ./QEI/QEI.o
+ .debug_frame   0x000046f8       0xf4 ./QEI/QEI_freePin.o
+ .debug_frame   0x000047ec       0x7c ./QEI/SingleLegQEI.o
+ .debug_frame   0x00004868      0x2d8 ./PID.o
+ .debug_frame   0x00004b40      0x2ac ./Pins.o
+ .debug_frame   0x00004dec       0xb0 ./functions.o
+ .debug_frame   0x00004e9c      0x2c4 ./main.o
+ .debug_frame   0x00005160       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x0000518c       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x000051c4       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-errno.o)
+ .debug_frame   0x000051e4       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fclose.o)
+ .debug_frame   0x00005228       0x6c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fflush.o)
+ .debug_frame   0x00005294       0x58 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fgetc.o)
+ .debug_frame   0x000052ec      0x124 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-findfp.o)
+ .debug_frame   0x00005410       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fopen.o)
+ .debug_frame   0x00005464       0x74 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fprintf.o)
+ .debug_frame   0x000054d8       0x74 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-freer.o)
+ .debug_frame   0x0000554c       0x74 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fscanf.o)
+ .debug_frame   0x000055c0       0x3c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fseek.o)
+ .debug_frame   0x000055fc       0x60 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fseeko.o)
+ .debug_frame   0x0000565c       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fstatr.o)
+ .debug_frame   0x00005688       0x68 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fvwrite.o)
+ .debug_frame   0x000056f0       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fwalk.o)
+ .debug_frame   0x00005744       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-init.o)
+ .debug_frame   0x00005770       0x68 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-makebuf.o)
+ .debug_frame   0x000057d8       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-malloc.o)
+ .debug_frame   0x00005808       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
+ .debug_frame   0x0000585c       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memchr-stub.o)
+ .debug_frame   0x00005890       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memmove.o)
+ .debug_frame   0x000058c0       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+ .debug_frame   0x000058f4       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mlock.o)
+ .debug_frame   0x00005924       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-openr.o)
+ .debug_frame   0x00005950       0x58 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reallocr.o)
+ .debug_frame   0x000059a8       0x58 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reent.o)
+ .debug_frame   0x00005a00       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-refill.o)
+ .debug_frame   0x00005a40       0x3c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-rget.o)
+ .debug_frame   0x00005a7c       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x00005aa8       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-setbuf.o)
+ .debug_frame   0x00005ac8       0x50 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-setvbuf.o)
+ .debug_frame   0x00005b18       0x84 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sprintf.o)
+ .debug_frame   0x00005b9c       0x88 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sscanf.o)
+ .debug_frame   0x00005c24       0x88 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-stdio.o)
+ .debug_frame   0x00005cac       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strcmp.o)
+ .debug_frame   0x00005ce0       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strlen-stub.o)
+ .debug_frame   0x00005d00       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strncmp.o)
+ .debug_frame   0x00005d54       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
+ .debug_frame   0x00005d98       0x50 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfscanf.o)
+ .debug_frame   0x00005de8       0x88 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vfprintf.o)
+ .debug_frame   0x00005e70       0xbc c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vfscanf.o)
+ .debug_frame   0x00005f2c       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wbuf.o)
+ .debug_frame   0x00005f6c       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-writer.o)
+ .debug_frame   0x00005f98       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wsetup.o)
+ .debug_frame   0x00005fc4       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-closer.o)
+ .debug_frame   0x00005ff0       0x84 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-dtoa.o)
+ .debug_frame   0x00006074       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-flags.o)
+ .debug_frame   0x000060ac       0x6c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fread.o)
+ .debug_frame   0x00006118       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-isattyr.o)
+ .debug_frame   0x00006144       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-iswspace.o)
+ .debug_frame   0x00006164       0x9c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-locale.o)
+ .debug_frame   0x00006200       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-lseekr.o)
+ .debug_frame   0x0000622c       0x68 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mbrtowc.o)
+ .debug_frame   0x00006294       0x58 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mbtowc_r.o)
+ .debug_frame   0x000062ec      0x264 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+ .debug_frame   0x00006550       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-readr.o)
+ .debug_frame   0x0000657c       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sccl.o)
+ .debug_frame   0x000065c0       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sf_nan.o)
+ .debug_frame   0x000065e0       0x94 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strtod.o)
+ .debug_frame   0x00006674       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strtol.o)
+ .debug_frame   0x000066c8       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strtoll_r.o)
+ .debug_frame   0x00006708       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strtoul.o)
+ .debug_frame   0x0000675c       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strtoull_r.o)
+ .debug_frame   0x0000679c       0x78 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfiprintf.o)
+ .debug_frame   0x00006814       0xd8 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfiscanf.o)
+ .debug_frame   0x000068ec       0x6c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-ungetc.o)
+ .debug_frame   0x00006958       0xc8 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vfiprintf.o)
+ .debug_frame   0x00006a20       0x28 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-callocr.o)
+ .debug_frame   0x00006a48       0x88 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fputwc.o)
+ .debug_frame   0x00006ad0       0x84 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-gdtoa-gethex.o)
+ .debug_frame   0x00006b54       0x70 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-gdtoa-hexnan.o)
+ .debug_frame   0x00006bc4       0x60 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wcrtomb.o)
+ .debug_frame   0x00006c24       0x48 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00006c6c       0xdc c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libstdc++.a(si_class_type_info.o)
+ .debug_frame   0x00006d48       0xe0 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libstdc++.a(vmi_class_type_info.o)
+ .debug_frame   0x00006e28       0x84 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libstdc++.a(tinfo.o)
+ .debug_frame   0x00006eac       0xe4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libstdc++.a(class_type_info.o)
+ .debug_frame   0x00006f90       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_cos.o)
+ .debug_frame   0x00006fc8       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_fabs.o)
+ .debug_frame   0x00006fe8       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_floor.o)
+ .debug_frame   0x0000701c       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_sin.o)
+ .debug_frame   0x00007054       0x3c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_tan.o)
+ .debug_frame   0x00007090       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-w_acos.o)
+ .debug_frame   0x000070d0       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-w_atan2.o)
+ .debug_frame   0x000070f0       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-w_pow.o)
+ .debug_frame   0x0000713c       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-w_sqrt.o)
+ .debug_frame   0x00007180       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-e_acos.o)
+ .debug_frame   0x000071b8       0x48 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-e_atan2.o)
+ .debug_frame   0x00007200       0x68 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-e_pow.o)
+ .debug_frame   0x00007268       0x48 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-e_rem_pio2.o)
+ .debug_frame   0x000072b0       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-e_sqrt.o)
+ .debug_frame   0x000072e0       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-k_cos.o)
+ .debug_frame   0x0000732c       0x50 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-k_rem_pio2.o)
+ .debug_frame   0x0000737c       0x48 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-k_sin.o)
+ .debug_frame   0x000073c4       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-k_tan.o)
+ .debug_frame   0x00007410       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_atan.o)
+ .debug_frame   0x00007448       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_finite.o)
+ .debug_frame   0x00007468       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_matherr.o)
+ .debug_frame   0x00007488       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_nan.o)
+ .debug_frame   0x000074a8       0x3c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_rint.o)
+ .debug_frame   0x000074e4       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_scalbn.o)
+ .debug_frame   0x00007514       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_copysign.o)
+ .debug_frame   0x00007534       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
+ .debug_frame   0x00007560       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
 
 .debug_loc      0x00000000       0x81
  .debug_loc     0x00000000       0x47 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)

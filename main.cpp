@@ -69,13 +69,7 @@ int main(){
 		AdjustCycle(1000);
 
 		MRmode.update();
-//		if(MRmode.is_switched())
-			set_limits();
-
-		if(MRmode.get_now()==MRMode::SandDune){
-			if((int)can_receiver.get_data(CANID::LegUp)&0x2)RR.set_y_initial(280-110);
-			if((int)can_receiver.get_data(CANID::LegUp)&0x8)RL.set_y_initial(280-110);
-		}
+		set_limits();
 
 		set_cycle(&walk_period, &walk_duty);
 
@@ -85,8 +79,16 @@ int main(){
 		RL.set_duty(walk_duty);
 
 		//脚固定系座標での目標位置計算
-		RR.walk();
-		RL.walk();
+		if(MRmode.get_now()==MRMode::SandDune){
+			if((int)can_receiver.get_data(CANID::LegUp)&0x2)RR.set_y_initial(280-100);
+			if((int)can_receiver.get_data(CANID::LegUp)&0x8)RL.set_y_initial(280-100);
+//			RR.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.1);
+//			RL.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.1);
+		}
+		else{
+		}
+			RR.walk();
+			RL.walk();
 
 		//駆動
 		RRf.move_to(RR.get_x(), RR.get_y());
@@ -128,6 +130,12 @@ void setLegs(){
 
 
 void set_limits(){
+	RRf.mrmode_update();
+	RRr.mrmode_update();
+	RLf.mrmode_update();
+	RLr.mrmode_update();
+	RR.mrmode_update();
+	RL.mrmode_update();
 	RRf.set_limits();
 	RRr.set_limits();
 	RLf.set_limits();
@@ -142,12 +150,12 @@ void set_limits(){
 void set_cycle(float *period, float *duty){
 	switch((int)MRmode.get_now()){
 	case MRMode::GobiArea:
-		*period = 0.75;
+		*period = 1;
 		*duty = 0.55;
 		break;
 	case MRMode::SandDune:
-		*period = 1;
-		*duty = 0.55;
+		*period = 1.6;//5;//1;
+		*duty = 0.55;//0.8;//0.55;
 		break;
 	case MRMode::Tussock1:
 		*period = 1;
@@ -183,7 +191,7 @@ void initLegs(SingleLeg *leg_f, InitLegInfo *info_f,
 	//ゆっくりスイッチに近づける
 	if(!info_f->enc_reset){
 		info_f->angle_target = leg_f->get_enc() + 0.25;//200[roop/sec], 20[degree/sec] -> 0.1[degree/roop]
-		info_r->angle_target = leg_r->get_enc() - 0.1;
+		info_r->angle_target = leg_r->get_enc() - 0.05;
 		if(leg_f->get_sw()){
 			leg_f->reset_duty();leg_r->reset_duty();
 			leg_f->reset_enc();
@@ -208,7 +216,7 @@ void initLegs(SingleLeg *leg_f, InitLegInfo *info_f,
 	}
 	//駆動
 	if(!info_f->enc_reset){
-		leg_f->set_duty_limit(0.55, 0.45);
+		leg_f->set_duty_limit(0.575, 0.425);
 		leg_r->set_duty_limit(0.55, 0.45);
 		leg_f->move_to_angle(info_f->angle_target);
 		leg_r->move_to_angle(info_r->angle_target);
