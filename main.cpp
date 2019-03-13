@@ -79,7 +79,7 @@ int main(){
 		RL.set_duty(walk_duty);
 
 		//脚固定系座標での目標位置計算
-		if(MRmode.get_now()==MRMode::SandDune){
+		if(MRmode.get_now()==MRMode::SandDuneRear){
 			if((int)can_receiver.get_data(CANID::LegUp)&0x2)RR.set_y_initial(280-100);
 			if((int)can_receiver.get_data(CANID::LegUp)&0x8)RL.set_y_initial(280-100);
 //			RR.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.1);
@@ -97,15 +97,17 @@ int main(){
 		RLr.move_to(RL.get_x(), RL.get_y());
 
 		//DEBUG
-		pc.printf("mode:%d  ", RR.get_mode());
-		pc.printf("timer:%1.4f  ", timer_RR.read());
-		pc.printf("speed:%3.4f  dir:%1.3f  ", can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction));
-		pc.printf("x:%3.3f  y:%3.3f  ", RR.get_x(), RR.get_y());
-		pc.printf("enc:%3.2f  ", enc_RRf.getAngle());
-		pc.printf("angle:%3.2f  duty:%1.4f  ", RRf.get_angle(), RRf.get_duty());
-		pc.printf("[%d][%d][%d][%d] ", sw_RRf.read(), sw_RRr.read(), sw_RLf.read(), sw_RLr.read());
+		if(pc.readable()){
+			pc.printf("mode:%d  ", RR.get_mode());
+			pc.printf("timer:%1.4f  ", timer_RR.read());
+			pc.printf("speed:%3.4f  dir:%1.3f  ", can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction));
+			pc.printf("x:%3.3f  y:%3.3f  ", RR.get_x(), RR.get_y());
+			pc.printf("enc:%3.2f  ", enc_RRf.getAngle());
+			pc.printf("angle:%3.2f  duty:%1.4f  ", RRf.get_angle(), RRf.get_duty());
+	//		pc.printf("[%d][%d][%d][%d] ", sw_RRf.read(), sw_RRr.read(), sw_RLf.read(), sw_RLr.read());
 
-		pc.printf("\r\n");
+			pc.printf("\r\n");
+		}
 	}
 }
 
@@ -150,10 +152,14 @@ void set_limits(){
 void set_cycle(float *period, float *duty){
 	switch((int)MRmode.get_now()){
 	case MRMode::GobiArea:
-		*period = 1;
+		*period = 2;//1.5;//1;
 		*duty = 0.55;
 		break;
-	case MRMode::SandDune:
+	case MRMode::SandDuneFront:
+		*period = 1.6;//5;//1;
+		*duty = 0.55;//0.8;//0.55;
+		break;
+	case MRMode::SandDuneRear:
 		*period = 1.6;//5;//1;
 		*duty = 0.55;//0.8;//0.55;
 		break;

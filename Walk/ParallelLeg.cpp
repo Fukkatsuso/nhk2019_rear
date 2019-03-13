@@ -150,7 +150,6 @@ void ParallelLeg::walk_stable(float spd, float dir, float rate_stablemove_time)
 	check_stable_flag();
 	calc_stable_velocity();
 	calc_stable_position();
-
 }
 
 //斜め方向に歩くとき
