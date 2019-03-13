@@ -11623,7 +11623,7 @@ OUTPUT(RearLegs_2.0.axf elf32-littlearm)
  .debug_macro   0x0000dd20      0x546 ./functions.o
  .debug_macro   0x0000e266      0x624 ./main.o
 
-.debug_line     0x00000000    0x1c09a
+.debug_line     0x00000000    0x1c098
  .debug_line    0x00000000      0x91b ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o
  .debug_line    0x0000091b      0x50b ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_api.o
  .debug_line    0x00000e26      0x7a8 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/gpio_irq_api.o
@@ -11673,9 +11673,9 @@ OUTPUT(RearLegs_2.0.axf elf32-littlearm)
  .debug_line    0x00018d7f      0xc21 ./PID.o
  .debug_line    0x000199a0      0xc75 ./Pins.o
  .debug_line    0x0001a615      0xb03 ./functions.o
- .debug_line    0x0001b118      0xe34 ./main.o
- .debug_line    0x0001bf4c      0x101 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
- .debug_line    0x0001c04d       0x4d c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
+ .debug_line    0x0001b118      0xe32 ./main.o
+ .debug_line    0x0001bf4a      0x101 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_sbrk.o)
+ .debug_line    0x0001c04b       0x4d c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_newlib_nohost.a(_cr_check_heap.o)
 
 .debug_str      0x00000000    0x18798
  .debug_str     0x00000000     0xe187 ./mbed-src/targets/hal/TARGET_NXP/TARGET_LPC176X/can_api.o

@@ -27,18 +27,8 @@ ForwardKinematics fw_RR(BASE_X, 0, &enc_RRf, -BASE_X, 0, &enc_RRr);
 ForwardKinematics fw_RL(BASE_X, 0, &enc_RLf, -BASE_X, 0, &enc_RLr);
 
 
-
-void setLegs();
-void set_limits();
 void set_cycle(float *period, float *duty);
-void moveLeg(SingleLeg *front, SingleLeg *rear, float x, float y);
 void CANrcv();
-
-void initLegs(SingleLeg *leg_f, InitLegInfo *info_f,
-			  SingleLeg *leg_r, InitLegInfo *info_r,
-			  ForwardKinematics *fw);
-void autoInit();
-void orbit_log(ParallelLeg *invLeg, ForwardKinematics *fwLeg);
 
 
 CANMessage rcvMsg;
