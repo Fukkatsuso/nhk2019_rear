@@ -32,7 +32,7 @@ Limits limits[MRMode::Area_end] =
 			  {{X_CLIMB_MAX, 	X_CLIMB_MIN},  	  {250, 	150}, 	{110, 		-20}, 		{0.7, 	   0.3}},	//Start2
 			  {{X_CLIMB_MAX, 	X_CLIMB_MIN},  	  {250,   	150}, 	{110, 		-20}, 		{0.7, 	   0.3}},//StartClimb1
 			  {{X_CLIMB_MAX, 	X_CLIMB_MIN},  	  {250,   	100}, 	{110, 		-20},		{0.7, 	   0.3}},//StartClimb2//Rear開始
-			  {{100, 			-100}, 			  {250, 	100}, 	{110, 		-20}, 		{0.7, 	   0.3}},	//MountainArea
+			  {{X_CLIMB_MAX, 	X_CLIMB_MIN},	  {250, 	100}, 	{110, 		-20}, 		{0.7, 	   0.3}},	//MountainArea
 			  {{100, 			-100}, 			  {250, 	150}, 	{110, 		-20}, 		{0.7, 	   0.3}},	//UukhaiZone
 			  {{100, 			-100}, 			  {250,	 	150}, 	{110, 		-20}, 		{0.7, 	   0.3}},	//Uukhai
 			  {{100,			-100}, 			  {250,	 	150}, 	{110, 		-20}, 		{0.7, 	   0.3}}	//Finish2
@@ -57,8 +57,8 @@ Orbits orbits[MRMode::Area_end] =
 				{0, 			0,				200, 	50},	//WaitMountainUrtuu
 				{0, 			0,				200, 	50},	//GetSign
 				{0, 			0,				200, 	100},	//Start2
-				{0, 			0, 				230, 	80},//StartClimb1
-				{GRAD_SLOPE, 	0, 				200, 	100},//StartClimb2//Rear開始
+				{0, 			0, 				200, 	80},	//StartClimb1
+				{GRAD_SLOPE, 	X_CLIMB_INIT,	200, 	100},	//StartClimb2//Rear開始
 				{0, 			X_CLIMB_INIT,	200, 	100},	//MountainArea
 				{0, 			0,				250, 	80},	//UukhaiZone
 				{0, 			0,				250, 	80},	//Uukhai

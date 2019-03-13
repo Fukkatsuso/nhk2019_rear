@@ -30,6 +30,7 @@ ForwardKinematics fw_RL(BASE_X, 0, &enc_RLf, -BASE_X, 0, &enc_RLr);
 void setLegs();
 void set_limits();
 void set_cycle(float *period, float *duty);
+void moveLeg(SingleLeg *front, SingleLeg *rear, float x, float y);
 void CANrcv();
 
 struct InitLegInfo{
@@ -43,6 +44,8 @@ void initLegs(SingleLeg *leg_f, InitLegInfo *info_f,
 			  SingleLeg *leg_r, InitLegInfo *info_r,
 			  ForwardKinematics *fw);
 void autoInit();
+void orbit_log(ParallelLeg *invLeg, ForwardKinematics *fwLeg);
+
 
 CANMessage rcvMsg;
 CANReceiver can_receiver(&can);
@@ -82,30 +85,32 @@ int main(){
 		if(MRmode.get_now()==MRMode::SandDuneRear){
 			if((int)can_receiver.get_data(CANID::LegUp)&0x2)RR.set_y_initial(280-100);
 			if((int)can_receiver.get_data(CANID::LegUp)&0x8)RL.set_y_initial(280-100);
-//			RR.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.1);
-//			RL.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.1);
+		}
+
+		if(MRMode::StartClimb1<=MRmode.get_now() && MRmode.get_now()<=MRMode::MountainArea){
+			RR.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.1);
+			moveLeg(&RRf, &RRr, RR.get_x(), RR.get_y());
+			RL.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.1);
+			moveLeg(&RLf, &RLr, RL.get_x(), RL.get_y());
 		}
 		else{
-		}
 			RR.walk();
+			moveLeg(&RRf, &RRr, RR.get_x(), RR.get_y());
 			RL.walk();
-
-		//駆動
-		RRf.move_to(RR.get_x(), RR.get_y());
-		RRr.move_to(RR.get_x(), RR.get_y());
-		RLf.move_to(RL.get_x(), RL.get_y());
-		RLr.move_to(RL.get_x(), RL.get_y());
+			moveLeg(&RLf, &RLr, RL.get_x(), RL.get_y());
+		}
 
 		//DEBUG
 		if(pc.readable()){
-			pc.printf("mode:%d  ", RR.get_mode());
-			pc.printf("timer:%1.4f  ", timer_RR.read());
-			pc.printf("speed:%3.4f  dir:%1.3f  ", can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction));
-			pc.printf("x:%3.3f  y:%3.3f  ", RR.get_x(), RR.get_y());
-			pc.printf("enc:%3.2f  ", enc_RRf.getAngle());
-			pc.printf("angle:%3.2f  duty:%1.4f  ", RRf.get_angle(), RRf.get_duty());
-	//		pc.printf("[%d][%d][%d][%d] ", sw_RRf.read(), sw_RRr.read(), sw_RLf.read(), sw_RLr.read());
+//			pc.printf("mode:%d  ", RR.get_mode());
+//			pc.printf("timer:%1.4f  ", timer_RR.read());
+//			pc.printf("speed:%3.4f  dir:%1.3f  ", can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction));
+//			pc.printf("x:%3.3f  y:%3.3f  ", RR.get_x(), RR.get_y());
+//			pc.printf("enc:%3.2f  ", enc_RRf.getAngle());
+//			pc.printf("angle:%3.2f  duty:%1.4f  ", RRf.get_angle(), RRf.get_duty());
+//			pc.printf("[%d][%d][%d][%d] ", sw_RRf.read(), sw_RRr.read(), sw_RLf.read(), sw_RLr.read());
 
+			orbit_log(&RR, &fw_RR);
 			pc.printf("\r\n");
 		}
 	}
@@ -171,6 +176,12 @@ void set_cycle(float *period, float *duty){
 		*period = 2;
 		*duty = 0.8;
 	}
+}
+
+
+void moveLeg(SingleLeg *front, SingleLeg *rear, float x, float y){
+	front->move_to(x, y);
+	rear->move_to(x, y);
 }
 
 
@@ -276,4 +287,10 @@ void autoInit(){
 
 		if(pc.readable())if(pc.getc()=='s')break;//"s"を押したら強制終了
 	}
+}
+
+void orbit_log(ParallelLeg *invLeg, ForwardKinematics *fwLeg){
+	fwLeg->estimate();
+	pc.printf("%3.4f\t%3.4f\t", invLeg->get_x(), invLeg->get_y());
+	pc.printf("%3.4f\t%3.4f\t", fwLeg->get_x(), fwLeg->get_y());
 }
