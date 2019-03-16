@@ -70,9 +70,9 @@ int main(){
 		}
 
 		if(MRMode::StartClimb1<=MRmode.get_now() && MRmode.get_now()<=MRMode::MountainArea){
-			RR.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.1);
+			RR.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.25);
 			moveLeg(&RRf, &RRr, RR.get_x(), RR.get_y());
-			RL.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.1);
+			RL.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.25);
 			moveLeg(&RLf, &RLr, RL.get_x(), RL.get_y());
 		}
 		else{
@@ -122,12 +122,12 @@ void set_cycle(float *period, float *duty){
 		*duty = 0.8;
 		break;
 	case MRMode::StartClimb1:
-		*period = 5;
-		*duty = 0.8;
+		*period = 4;
+		*duty = 0.55;
 		break;
 	case MRMode::StartClimb2:
-		*period = 5;
-		*duty = 0.8;
+		*period = 4;
+		*duty = 0.55;
 	}
 }
 
