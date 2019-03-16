@@ -26,15 +26,13 @@ ParallelLeg RL(Rear, Left, -200, 200);
 ForwardKinematics fw_RR(BASE_X, 0, &enc_RRf, -BASE_X, 0, &enc_RRr);
 ForwardKinematics fw_RL(BASE_X, 0, &enc_RLf, -BASE_X, 0, &enc_RLr);
 
-
-void set_cycle(float *period, float *duty);
-void CANrcv();
-
-
 CANMessage rcvMsg;
 CANReceiver can_receiver(&can);
 
 MRMode MRmode(&can_receiver, MRMode::GobiArea, true);//実行の度に要確認
+
+void set_cycle(float *period, float *duty);
+void CANrcv();
 
 
 int main(){
@@ -66,7 +64,7 @@ int main(){
 		RL.set_duty(walk_duty);
 
 		//脚固定系座標での目標位置計算
-		if(MRmode.get_now()==MRMode::SandDuneRear){
+		if(MRmode.get_now()==MRMode::SandDuneFront || MRmode.get_now()==MRMode::SandDuneRear){
 			if((int)can_receiver.get_data(CANID::LegUp)&0x2)RR.set_y_initial(280-100);
 			if((int)can_receiver.get_data(CANID::LegUp)&0x8)RL.set_y_initial(280-100);
 		}
@@ -86,8 +84,8 @@ int main(){
 
 		//DEBUG
 		if(pc.readable()){
-//			pc.printf("mode:%d  ", RR.get_mode());
-//			pc.printf("timer:%1.4f  ", timer_RR.read());
+			pc.printf("mode:%d  ", RR.get_mode());
+			pc.printf("timer:%1.4f  ", timer_RR.read());
 //			pc.printf("speed:%3.4f  dir:%1.3f  ", can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction));
 //			pc.printf("x:%3.3f  y:%3.3f  ", RR.get_x(), RR.get_y());
 //			pc.printf("enc:%3.2f  ", enc_RRf.getAngle());
@@ -121,6 +119,14 @@ void set_cycle(float *period, float *duty){
 		break;
 	case MRMode::Start2:
 		*period = 2;
+		*duty = 0.8;
+		break;
+	case MRMode::StartClimb1:
+		*period = 5;
+		*duty = 0.8;
+		break;
+	case MRMode::StartClimb2:
+		*period = 5;
 		*duty = 0.8;
 	}
 }
