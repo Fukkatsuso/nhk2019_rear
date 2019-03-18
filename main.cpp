@@ -102,8 +102,8 @@ int main(){
 void set_cycle(float *period, float *duty){
 	switch((int)MRmode.get_now()){
 	case MRMode::GobiArea:
-		*period = 2;//1.5;//1;
-		*duty = 0.55;
+		*period = 0.8;//2;//1.5;//1;
+		*duty = 0.5;//0.55;
 		break;
 	case MRMode::SandDuneFront:
 		*period = 1.6;//5;//1;
@@ -114,7 +114,7 @@ void set_cycle(float *period, float *duty){
 		*duty = 0.55;//0.8;//0.55;
 		break;
 	case MRMode::Tussock1:
-		*period = 1;
+		*period = 1.6;
 		*duty = 0.55;
 		break;
 	case MRMode::Start2:
@@ -126,7 +126,7 @@ void set_cycle(float *period, float *duty){
 		*duty = 0.55;
 		break;
 	case MRMode::StartClimb2:
-		*period = 4;
+		*period = 3;//4;
 		*duty = 0.55;
 	}
 }

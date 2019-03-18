@@ -47,9 +47,9 @@ Orbits orbits[MRMode::Area_end] =
 				{0, 			0,				280, 	10},	//GetGerege
 				{0, 			0,				280, 	10},	//PrepareWalking
 				{0, 			0,				280, 	50},	//Start1
-				{0, 			0,				280, 	30},	//GobiArea
-				{0, 			-5,				280, 	30},	//SandDuneFront
-				{0,				5,				280,	300},//150	//SandDuneRear
+				{0, 			-5,				280, 	15},//30	//GobiArea
+				{0, 			0,				280, 	30},	//SandDuneFront
+				{0,				0,				280,	300},//150	//SandDuneRear
 				{0, 			0,				250, 	50},	//ReadyForTussock
 				{0, 			0,				280, 	350},//150},	//Tussock1
 				{0, 			0,				280, 	150},	//Tussock2
@@ -59,7 +59,7 @@ Orbits orbits[MRMode::Area_end] =
 				{0, 			0,				200, 	100},	//Start2
 				{0, 			0, 				200, 	80},	//StartClimb1
 				{GRAD_SLOPE, 	X_CLIMB_INIT,	200, 	100},	//StartClimb2//Rear開始
-				{0, 			X_CLIMB_INIT,	200, 	100},	//MountainArea
+				{0, 			X_CLIMB_INIT,	200, 	50},	//MountainArea
 				{0, 			0,				250, 	80},	//UukhaiZone
 				{0, 			0,				250, 	80},	//Uukhai
 				{0, 			0,				250, 	50}	//Finish2
