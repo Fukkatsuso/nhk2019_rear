@@ -38,6 +38,7 @@ void CANrcv();
 int main(){
 	float walk_period = 1;//2;
 	float walk_duty = 0.55;//0.80;
+	int mrmode = MRmode.get_now();
 	can.frequency(1000000);
 	can.attach(&CANrcv, CAN::RxIrq);
 	wait_ms(300); //全ての基板の電源が入るまで待つ
@@ -63,19 +64,29 @@ int main(){
 		RL.set_period(walk_period);
 		RL.set_duty(walk_duty);
 
+		mrmode = (int)MRmode.get_now();
+
 		//脚固定系座標での目標位置計算
-		if(MRmode.get_now()==MRMode::SandDuneFront || MRmode.get_now()==MRMode::SandDuneRear){
-			if((int)can_receiver.get_data(CANID::LegUp)&0x2)RR.set_y_initial(280-100);
-			if((int)can_receiver.get_data(CANID::LegUp)&0x8)RL.set_y_initial(280-100);
+		if(mrmode==MRMode::SandDuneFront || mrmode==MRMode::SandDuneRear){
+			if((int)can_receiver.get_data(CANID::LegUp)&0x2)RR.set_y_initial(260-100);
+			if((int)can_receiver.get_data(CANID::LegUp)&0x8)RL.set_y_initial(260-100);
+			RR.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.25);
+			moveLeg(&RRf, &RRr, RR.get_x(), RR.get_y());
+			RL.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.25);
+			moveLeg(&RLf, &RLr, RL.get_x(), RL.get_y());
 		}
 
-		if(MRMode::StartClimb1<=MRmode.get_now() && MRmode.get_now()<=MRMode::MountainArea){
+		else if(MRMode::StartClimb1<=mrmode && mrmode<=MRMode::MountainArea){
 			RR.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.25);
 			moveLeg(&RRf, &RRr, RR.get_x(), RR.get_y());
 			RL.walk_stable(can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction), 0.25);
 			moveLeg(&RLf, &RLr, RL.get_x(), RL.get_y());
 		}
 		else{
+			if(mrmode==MRMode::Tussock1){
+				if((int)can_receiver.get_data(CANID::LegUp)&0x2)RR.set_height(360);
+				if((int)can_receiver.get_data(CANID::LegUp)&0x8)RL.set_height(360);
+			}
 			RR.walk();
 			moveLeg(&RRf, &RRr, RR.get_x(), RR.get_y());
 			RL.walk();
@@ -102,20 +113,20 @@ int main(){
 void set_cycle(float *period, float *duty){
 	switch((int)MRmode.get_now()){
 	case MRMode::GobiArea:
-		*period = 0.8;//2;//1.5;//1;
+		*period = 1;//2;//1.5;//1;
 		*duty = 0.5;//0.55;
 		break;
 	case MRMode::SandDuneFront:
-		*period = 1.6;//5;//1;
-		*duty = 0.55;//0.8;//0.55;
+		*period = 4;//1.6;//5;//1;
+		*duty = 0.5;//0.55;//0.8;//0.55;
 		break;
 	case MRMode::SandDuneRear:
-		*period = 1.6;//5;//1;
-		*duty = 0.55;//0.8;//0.55;
+		*period = 4;//1.6;//5;//1;
+		*duty = 0.5;//0.55;//0.8;//0.55;
 		break;
 	case MRMode::Tussock1:
-		*period = 1.6;
-		*duty = 0.55;
+		*period = 2;
+		*duty = 0.5;
 		break;
 	case MRMode::Start2:
 		*period = 2;
