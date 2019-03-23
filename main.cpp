@@ -36,8 +36,8 @@ void CANrcv();
 
 
 int main(){
-	float walk_period = 1;//2;
-	float walk_duty = 0.55;//0.80;
+	float walk_period = 1;
+	float walk_duty = 0.5;
 	int mrmode = MRmode.get_now();
 	can.frequency(1000000);
 	can.attach(&CANrcv, CAN::RxIrq);
@@ -77,20 +77,14 @@ int main(){
 			RL.trigger_tussock((int)can_receiver.get_data(CANID::LegUp)&0x8);
 			RR.set_walkmode(Gait::NormalGait, Recovery::Cycloid, 0);
 			RL.set_walkmode(Gait::NormalGait, Recovery::Cycloid, 0);
-//			RR.set_walkmode(Gait::ActiveStableGait, Recovery::Cycloid, 0.25);
-//			RL.set_walkmode(Gait::ActiveStableGait, Recovery::Cycloid, 0.25);
 		}
 		else if(MRMode::Start2<=mrmode && mrmode<=MRMode::MountainArea){
-//			RR.set_walkmode(Gait::StableGait, Recovery::Cycloid, 0.25);
-//			RL.set_walkmode(Gait::StableGait, Recovery::Cycloid, 0.25);
 			RR.set_walkmode(Gait::ActiveStableGait, Recovery::Cycloid, 0);
 			RL.set_walkmode(Gait::ActiveStableGait, Recovery::Cycloid, 0);
 		}
 		else{
 			RR.set_walkmode(Gait::NormalGait, Recovery::Cycloid, 0);
 			RL.set_walkmode(Gait::NormalGait, Recovery::Cycloid, 0);
-//			RR.set_walkmode(Gait::ActiveStableGait, Recovery::Cycloid, 0.1);
-//			RL.set_walkmode(Gait::ActiveStableGait, Recovery::Cycloid, 0.1);
 		}
 
 		//脚固定系座標での目標位置計算
@@ -119,19 +113,19 @@ int main(){
 void set_cycle(float *period, float *duty){
 	switch((int)MRmode.get_now()){
 	case MRMode::GobiArea:
-		*period = 1;//1.6;//1;
-		*duty = 0.5;//0.55;
+		*period = 1;
+		*duty = 0.5;
 		break;
 	case MRMode::SandDuneFront:
-		*period = 2;//1.6;//2;
+		*period = 2;
 		*duty = 0.5;
 		break;
 	case MRMode::SandDuneRear:
-		*period = 2;//1.6;//2;
+		*period = 2;
 		*duty = 0.5;
 		break;
 	case MRMode::Tussock:
-		*period = 1;//1.0*5.0/3.0;//1;
+		*period = 1;
 		*duty = 0.5;
 		break;
 	case MRMode::Start2:
