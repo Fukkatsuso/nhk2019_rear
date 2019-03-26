@@ -10,6 +10,7 @@
 #include "mbed.h"
 #include "QEI/SingleLegQEI.h"
 #include "InitSwitch.h"
+#include "PhotoelectricSensor.h"
 
 #define CYCLE 5000 //動作周期(us)
 
@@ -36,6 +37,8 @@ extern InitSwitch sw_RRf;
 extern InitSwitch sw_RRr;
 extern InitSwitch sw_RLf;
 extern InitSwitch sw_RLr;
+
+extern PhotoelectricSensor kouden_SandDuneRear;
 
 
 /********************

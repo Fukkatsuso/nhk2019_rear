@@ -71,7 +71,7 @@ Walk/ParallelLeg.o Walk/ParallelLeg.d: ../Walk/ParallelLeg.cpp \
  C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\hal/sleep_api.h \
  C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\api/rtc_time.h \
  ../Walk/MRMode.h ../Walk/CANs/CANReceiver.h ../Walk/CANs/CANProtocol.h \
- ../Walk/ClockTimer.h \
+ ../Walk/CANs/CANSender.h ../Walk/ClockTimer.h \
  C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0/functions.h
 
 ../Walk/ParallelLeg.h:
@@ -221,6 +221,8 @@ C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearL
 ../Walk/CANs/CANReceiver.h:
 
 ../Walk/CANs/CANProtocol.h:
+
+../Walk/CANs/CANSender.h:
 
 ../Walk/ClockTimer.h:
 

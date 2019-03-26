@@ -3,6 +3,7 @@
 #include "functions.h"
 #include "LegFunctions.h"
 #include "Walk/CANs/CANReceiver.h"
+#include "Walk/CANs/CANSender.h"
 #include "Walk/ClockTimer.h"
 #include "Walk/SingleLeg.h"
 #include "Walk/ParallelLeg.h"
@@ -28,8 +29,9 @@ ForwardKinematics fw_RL(BASE_X, 0, &enc_RLf, -BASE_X, 0, &enc_RLr);
 
 CANMessage rcvMsg;
 CANReceiver can_receiver(&can);
+CANSender can_sender(&can);
 
-MRMode MRmode(&can_receiver, MRMode::GobiArea, true);//実行の度に要確認
+MRMode MRmode(&can_receiver, &can_sender, MRMode::GobiArea, true);//実行の度に要確認
 
 void set_cycle(float *period, float *duty);
 void CANrcv();
@@ -67,18 +69,28 @@ int main(){
 		mrmode = (int)MRmode.get_now();
 
 		if(mrmode==MRMode::SandDuneFront || mrmode==MRMode::SandDuneRear){
-			RR.trigger_sanddune((int)can_receiver.get_data(CANID::LegUp)&0x2);
-			RL.trigger_sanddune((int)can_receiver.get_data(CANID::LegUp)&0x8);
+//			RR.trigger_sanddune((int)can_receiver.get_data(CANID::LegUp)&0x2);
+//			RL.trigger_sanddune((int)can_receiver.get_data(CANID::LegUp)&0x8);
+			RR.trigger_sanddune(kouden_SandDuneRear.read());
+			RL.trigger_sanddune(kouden_SandDuneRear.read());
 			RR.set_walkmode(Gait::ActiveStableGait, Recovery::Quadrangle, 0);
 			RL.set_walkmode(Gait::ActiveStableGait, Recovery::Quadrangle, 0);
+			if(mrmode==MRMode::SandDuneRear && MRmode.is_changing_area()){
+				RR.set_height(20);
+				RL.set_height(20);
+			}
 		}
 		else if(mrmode==MRMode::Tussock){
-			RR.trigger_tussock((int)can_receiver.get_data(CANID::LegUp)&0x2);
-			RL.trigger_tussock((int)can_receiver.get_data(CANID::LegUp)&0x8);
+//			RR.trigger_tussock((int)can_receiver.get_data(CANID::LegUp)&0x2);
+//			RL.trigger_tussock((int)can_receiver.get_data(CANID::LegUp)&0x8);
+//			RR.trigger_tussock(kouden_SandDuneRear.read());
+//			RL.trigger_tussock(kouden_SandDuneRear.read());
+			RR.trigger_tussock(1);
+			RL.trigger_tussock(1);
 			RR.set_walkmode(Gait::NormalGait, Recovery::Cycloid, 0);
 			RL.set_walkmode(Gait::NormalGait, Recovery::Cycloid, 0);
 		}
-		else if(MRMode::Start2<=mrmode && mrmode<=MRMode::MountainArea){
+		else if(MRMode::StartClimb1<=mrmode && mrmode<=MRMode::MountainArea){
 			RR.set_walkmode(Gait::ActiveStableGait, Recovery::Cycloid, 0);
 			RL.set_walkmode(Gait::ActiveStableGait, Recovery::Cycloid, 0);
 		}
@@ -96,6 +108,7 @@ int main(){
 		//DEBUG
 		if(pc.readable()){
 //			pc.printf("mode:%d  ", RR.get_mode());
+			pc.printf("kouden:%d  ", kouden_SandDuneRear.read());
 //			pc.printf("timer:%1.4f  ", timer_RR.read());
 //			pc.printf("speed:%3.4f  dir:%1.3f  ", can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction));
 //			pc.printf("x:%3.3f  y:%3.3f  ", RR.get_x(), RR.get_y());
@@ -133,11 +146,11 @@ void set_cycle(float *period, float *duty){
 		*duty = 0.5;
 		break;
 	case MRMode::StartClimb1:
-		*period = 1;//1.2;
+		*period = 1;
 		*duty = 0.5;
 		break;
 	case MRMode::StartClimb2:
-		*period = 1;//1.2;
+		*period = 1;
 		*duty = 0.5;
 	}
 }

@@ -1,4 +1,5 @@
-LegFunctions.o LegFunctions.d: ../LegFunctions.cpp ../LegFunctions.h \
+PhotoelectricSensor.o PhotoelectricSensor.d: ../PhotoelectricSensor.cpp \
+ ../PhotoelectricSensor.h \
  C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\api/mbed.h \
  C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\api/platform.h \
  C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\targets\hal\TARGET_NXP\TARGET_LPC176X/device.h \
@@ -68,21 +69,9 @@ LegFunctions.o LegFunctions.d: ../LegFunctions.cpp ../LegFunctions.h \
  C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\hal/gpio_irq_api.h \
  C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\api/wait_api.h \
  C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\hal/sleep_api.h \
- C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\api/rtc_time.h \
- ../Pins.h ../QEI/SingleLegQEI.h ../QEI/QEI_freePin.h ../QEI/QEI.h \
- ../InitSwitch.h ../PhotoelectricSensor.h ../Walk/ClockTimer.h \
- ../Walk/SingleLeg.h ../Walk/Protected/LegConst.h \
- ../Walk/Protected/InverseKinematics.h \
- C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0/QEI/SingleLegQEI.h \
- C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0/InitSwitch.h \
- ../Walk/LegPID.h \
- C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0/PID.h \
- C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\QEI/SingleLegQEI.h \
- ../Walk/MRMode.h ../Walk/CANs/CANReceiver.h ../Walk/CANs/CANProtocol.h \
- ../Walk/CANs/CANSender.h ../Walk/ParallelLeg.h ../Walk/ClockTimer.h \
- ../Walk/MRMode.h ../Walk/ForwardKinematics.h
+ C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\api/rtc_time.h
 
-../LegFunctions.h:
+../PhotoelectricSensor.h:
 
 C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\api/mbed.h:
 
@@ -223,49 +212,3 @@ C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearL
 C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\hal/sleep_api.h:
 
 C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\mbed-src\api/rtc_time.h:
-
-../Pins.h:
-
-../QEI/SingleLegQEI.h:
-
-../QEI/QEI_freePin.h:
-
-../QEI/QEI.h:
-
-../InitSwitch.h:
-
-../PhotoelectricSensor.h:
-
-../Walk/ClockTimer.h:
-
-../Walk/SingleLeg.h:
-
-../Walk/Protected/LegConst.h:
-
-../Walk/Protected/InverseKinematics.h:
-
-C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0/QEI/SingleLegQEI.h:
-
-C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0/InitSwitch.h:
-
-../Walk/LegPID.h:
-
-C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0/PID.h:
-
-C:\Users\mutsuro\Documents\LPCXpresso_8.2.2_650\workspace\nhk_2019_walk_2v\RearLegs_2.0\QEI/SingleLegQEI.h:
-
-../Walk/MRMode.h:
-
-../Walk/CANs/CANReceiver.h:
-
-../Walk/CANs/CANProtocol.h:
-
-../Walk/CANs/CANSender.h:
-
-../Walk/ParallelLeg.h:
-
-../Walk/ClockTimer.h:
-
-../Walk/MRMode.h:
-
-../Walk/ForwardKinematics.h:
