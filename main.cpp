@@ -98,10 +98,10 @@ int main(){
 		//脚固定系座標での目標位置計算
 		RR.walk();
 		moveLeg(&RRf, &RRr, RR.get_x(), RR.get_y());
-		send_movedist(RR.get_x_distance_move(), CANID::MoveDistRR, CANID::FromRR);
+		send_movedist(RR.get_x_distance_move(), CANID::MoveDistRR, CANID::FromRear);
 		RL.walk();
 		moveLeg(&RLf, &RLr, RL.get_x(), RL.get_y());
-		send_movedist(RL.get_x_distance_move(), CANID::MoveDistRL, CANID::FromRL);
+		send_movedist(RL.get_x_distance_move(), CANID::MoveDistRL, CANID::FromRear);
 
 		//DEBUG
 		if(pc.readable()){
@@ -153,7 +153,7 @@ void set_cycle(float *period, float *duty){
 
 void send_movedist(float dist, enum CANID::DataType type, enum CANID::From from){
 	if(dist==0)return; //無駄な送信は却下
-	can_sender.send(CANID_generate(from, CANID::ToMaster, type), dist);
+	can_sender.send(CANID_generate(from, CANID::ToController, type), dist);
 	pc.printf("dist%d:%2.5f  ", type, dist);
 }
 
