@@ -84,8 +84,8 @@ int main(){
 			}
 		}
 		else if(mrmode==MRMode::Tussock){
-			RR.trigger_tussock((int)can_receiver.get_data(CANID::LegUp)&0x2);
-			RL.trigger_tussock((int)can_receiver.get_data(CANID::LegUp)&0x8);
+			RR.trigger_tussock((int)can_receiver.get_leg_up_RR());
+			RL.trigger_tussock((int)can_receiver.get_leg_up_RL());
 			RR.set_walkmode(Gait::NormalGait, Recovery::Cycloid, 0);
 			RL.set_walkmode(Gait::NormalGait, Recovery::Cycloid, 0);
 		}
@@ -116,7 +116,7 @@ int main(){
 //			pc.printf("mode:%d  ", RR.get_mode());
 //			pc.printf("kouden:%d  ", kouden_SandDuneRear.read());
 //			pc.printf("timer:%1.4f  ", timer_RR.read());
-//			pc.printf("speed:%3.4f  dir:%1.3f  ", can_receiver.get_data(CANID::Speed), can_receiver.get_data(CANID::Direction));
+			pc.printf("speed:%3.4f  dir:%1.3f  ", can_receiver.get_speed(), can_receiver.get_direction());
 //			pc.printf("x:%3.3f  y:%3.3f  ", RR.get_x(), RR.get_y());
 //			pc.printf("enc:%3.2f  ", enc_RRf.getAngle());
 //			pc.printf("angle:%3.2f  duty:%1.4f  ", RRf.get_angle(), RRf.get_duty());
@@ -161,7 +161,7 @@ void set_cycle(float *period, float *duty){
 
 
 void send_movedist(float dist, enum CANID::DataType type, enum CANID::From from){
-	can_sender.send(CANID_generate(from, CANID::ToController, type), dist);
+	can_sender.send_move_dist(CANID::generate(from, CANID::ToController, type), dist);
 //	pc.printf("dist%d:%2.5f  ", type, dist);
 }
 
@@ -169,15 +169,15 @@ void send_movedist(float dist, enum CANID::DataType type, enum CANID::From from)
 void CANrcv(){
 	if(can.read(rcvMsg)){
 		unsigned int id = rcvMsg.id;
-		//歩行パラメータ取得
-		if(CANID_is_to(id, CANID::ToSlaveAll)){
-			can_receiver.receive(id, rcvMsg.data);
-			return;
-		}
 		//タイマーリセット
-		if(CANID_is_type(id, CANID::TimerReset)){
+		if(CANID::is_type(id, CANID::TimerReset)){
 			timer_RR.reset();
 			timer_RL.reset();
+			return;
+		}
+		//歩行パラメータ取得
+		if(CANID::is_to(id, CANID::ToSlaveAll)){
+			can_receiver.receive(rcvMsg);
 			return;
 		}
 	}
