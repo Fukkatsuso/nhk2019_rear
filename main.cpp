@@ -41,6 +41,9 @@ void CANrcv();
 int main(){
 	float walk_period = 1;
 	float walk_duty = 0.5;
+	float walk_dist_right = 0;
+	float walk_dist_left = 0;
+	float walk_dist_rear = 0;
 	int mrmode = MRmode.get_now();
 
 	can.frequency(1000000);
@@ -98,10 +101,14 @@ int main(){
 		//脚固定系座標での目標位置計算
 		RR.walk();
 		moveLeg(&RRf, &RRr, RR.get_x(), RR.get_y());
-		send_movedist(RR.get_x_distance_move(), CANID::MoveDistRR, CANID::FromRear);
 		RL.walk();
 		moveLeg(&RLf, &RLr, RL.get_x(), RL.get_y());
-		send_movedist(RL.get_x_distance_move(), CANID::MoveDistRL, CANID::FromRear);
+
+		//歩行量計算+送信
+		walk_dist_right += RR.get_x_distance_move();
+		walk_dist_left += RL.get_x_distance_move();
+		walk_dist_rear = (walk_dist_right + walk_dist_left) / 2.0;
+		send_movedist(walk_dist_rear, CANID::MoveDistRear, CANID::FromRear);
 
 		//DEBUG
 		if(pc.readable()){
@@ -114,6 +121,8 @@ int main(){
 //			pc.printf("enc:%3.2f  ", enc_RRf.getAngle());
 //			pc.printf("angle:%3.2f  duty:%1.4f  ", RRf.get_angle(), RRf.get_duty());
 //			pc.printf("[%d][%d][%d][%d] ", sw_RRf.read(), sw_RRr.read(), sw_RLf.read(), sw_RLr.read());
+
+			pc.printf("dist[%f][%f][%f]  ", walk_dist_right, walk_dist_left, walk_dist_rear);
 
 //			orbit_log(&RR, &fw_RR);
 			orbit_log(&RL, &fw_RL);
@@ -152,9 +161,8 @@ void set_cycle(float *period, float *duty){
 
 
 void send_movedist(float dist, enum CANID::DataType type, enum CANID::From from){
-	if(dist==0)return; //無駄な送信は却下
 	can_sender.send(CANID_generate(from, CANID::ToController, type), dist);
-	pc.printf("dist%d:%2.5f  ", type, dist);
+//	pc.printf("dist%d:%2.5f  ", type, dist);
 }
 
 
