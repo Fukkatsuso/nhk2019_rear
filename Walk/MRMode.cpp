@@ -55,13 +55,13 @@ Orbits orbits[MRMode::Area_end] =
 				{0, 			X_NORMAL_INIT,	260, 	HEIGHT_NORMAL,		1},		//Tussock
 				{0, 			X_NORMAL_INIT,	260, 	HEIGHT_NORMAL,		1},		//Finish1
 				{0, 			0,				260, 	HEIGHT_NORMAL,		1},		//WaitMountainUrtuu
-				{0, 			0,				200, 	HEIGHT_NORMAL,		0.5},		//GetSign
+				{0, 			0,				200, 	HEIGHT_NORMAL,		0.5},		//GetSign //ここで姿勢変更
 				{0, 			0,				200, 	HEIGHT_NORMAL,		1},		//Start2
-				{0, 			0, 				200, 	40,					1},		//StartClimb1
+				{0, 			0,				200, 	40,					1},		//StartClimb1
 				{-GRAD_SLOPE, 	X_CLIMB_INIT,	200, 	50,					1},		//StartClimb2//Rear開始
 				{0, 			X_CLIMB_INIT,	200, 	40,					1},		//MountainArea
-				{0, 			0,				260, 	80,					0.5},		//UukhaiZone
-				{0, 			0,				260, 	80,					0.5},		//Uukhai
+				{0, 			0,				260, 	50,					0.5},		//UukhaiZone
+				{0, 			0,				260, 	50,					0.5},		//Uukhai
 				{0, 			0,				260, 	50,					0.5}		//Finish2
 		};
 

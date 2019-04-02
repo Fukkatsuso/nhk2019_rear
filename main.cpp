@@ -46,6 +46,7 @@ int main(){
 	float walk_dist_right = 0;
 	float walk_dist_left = 0;
 	float walk_dist_rear = 0;
+	unsigned int kouden_SandDuneRear_max = 0;
 	int mrmode = MRmode.get_now();
 
 	can.frequency(1000000);
@@ -78,10 +79,22 @@ int main(){
 		kouden_SandDuneRear.sensing();
 		mrmode = (int)MRmode.get_now();
 
+		//
+		RR.trigger_sanddune(kouden_SandDuneRear.get_counter(150), 4);
+		RL.trigger_sanddune(kouden_SandDuneRear.get_counter(150), 4);
+
 		if(mrmode==MRMode::SandDuneFront || mrmode==MRMode::SandDuneRear){
-			if(mrmode==MRMode::SandDuneFront)kouden_SandDuneRear.reset_counter();//絶対に足上げない
-			RR.trigger_sanddune(kouden_SandDuneRear.get_counter(60), 3);
-			RL.trigger_sanddune(kouden_SandDuneRear.get_counter(60), 3);
+			if(mrmode==MRMode::SandDuneFront)
+				kouden_SandDuneRear.reset_counter();//絶対に足上げない
+			else{
+				//最大値更新
+				if(kouden_SandDuneRear_max < kouden_SandDuneRear.get_counter(0))
+					kouden_SandDuneRear_max = kouden_SandDuneRear.get_counter(0);
+				if(kouden_SandDuneRear.get_counter(0) < limit(kouden_SandDuneRear_max - 100, kouden_SandDuneRear_max, 0)){
+					kouden_SandDuneRear.reset_counter();
+					MRmode.request_to_change_area(MRMode::ReadyForTussock, CANID::FromRear);
+				}
+			}
 			RR.set_walkmode(Gait::ActiveStableGait, Recovery::Quadrangle, 0);
 			RL.set_walkmode(Gait::ActiveStableGait, Recovery::Quadrangle, 0);
 		}
