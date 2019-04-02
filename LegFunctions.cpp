@@ -51,8 +51,8 @@ void moveLeg(SingleLeg *front, SingleLeg *rear, float x, float y){
 }
 
 
-#define INITIAL_SET_X 0
-#define INITIAL_SET_Y 260
+#define INITIAL_SET_X MRmode.get_orbits(MRmode.get_now())->init_x //0
+#define INITIAL_SET_Y MRmode.get_orbits(MRmode.get_now())->init_y //240
 void initLegs(SingleLeg *leg_f, InitLegInfo *info_f,
 		  	  SingleLeg *leg_r, InitLegInfo *info_r,
 			  ForwardKinematics *fw){
@@ -85,7 +85,7 @@ void initLegs(SingleLeg *leg_f, InitLegInfo *info_f,
 
 	//駆動
 	if(!info_f->enc_reset){
-		leg_f->set_duty_limit(0.575, 0.425);
+		leg_f->set_duty_limit(0.625, 0.375);
 		leg_r->set_duty_limit(0.51, 0.49);
 		leg_f->move_to_angle(info_f->angle_target);
 		leg_r->move_to_angle(info_r->angle_target);
