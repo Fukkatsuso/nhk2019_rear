@@ -34,19 +34,26 @@ CANSender can_sender(&can);
 MRMode MRmode(&can_receiver, &can_sender, MRMode::GobiArea, true);//実行の度に要確認
 
 void set_cycle(float *period, float *duty);
-void send_move_position(float dist, unsigned char kouden_sanddune, enum CANID::DataType type, enum CANID::From from);
+void send_leg_info(enum CANID::From from, short dist, unsigned char state, unsigned char kouden);
 void CANrcv();
 
 
 int main(){
+	//歩行に必要な情報
 	float walk_period = 1;
 	float walk_duty = 0.5;
 	float walk_speed = 0;
 	float walk_direction = 0;
+	float walk_pitch = 0; //radに変換して格納すること
+	//歩いた結果の情報
 	float walk_dist_right = 0;
 	float walk_dist_left = 0;
 	float walk_dist_rear = 0;
 	unsigned int kouden_SandDuneRear_max = 0;
+	union can_LegState state_rear = {};
+	state_rear.right = state_rear.left = Stay;
+	union can_Kouden kouden_rear = {};
+
 	int mrmode = MRmode.get_now();
 
 	can.frequency(1000000);
@@ -57,50 +64,57 @@ int main(){
 	initParts();//センサー・モーター初期化
 	setLegs();//不変的設定
 
-	send_move_position(0, 0, CANID::MovePositionRear, CANID::FromRear);
+	send_leg_info(CANID::FromRear,	0, state_rear.byte[0], 0);
 
 	autoInit();//自動キャリブレーション
 
 	set_limits();
 
+	walk_duty = 0.5;
 	while(1){
 		AdjustCycle(1000);
 
 		MRmode.update();
 		set_limits();
 
-		set_cycle(&walk_period, &walk_duty);
-
-		RR.set_period(walk_period);
-		RR.set_duty(walk_duty);
-		RL.set_period(walk_period);
-		RL.set_duty(walk_duty);
-
 		kouden_SandDuneRear.sensing();
 		mrmode = (int)MRmode.get_now();
 
-		//
-		RR.trigger_sanddune(kouden_SandDuneRear.get_counter(150), 4);
-		RL.trigger_sanddune(kouden_SandDuneRear.get_counter(150), 4);
+		//基本:脚下げ時に光電センサの値が閾値以下(カウンタ最大値の一定以下?)であれば一番下まで下げる
+		//段差開始:Down時[flag==0 かつ 光電センサのカウンタ > ## かつ walk_on_dune==0] であれば、flagを1にする
+		//段差終了:Down時[flag==1 かつ 光電センサのカウンタ < カウンタの最大値-??] であれば、flagを0にする
+		//指定の歩数以上歩いたら強制的に一番下まで下げる(脚下げ時のみ判断)
+		//trigger_sanddune(kouden.get_counter(0), cnt_max, ##, cnt_max-??, max_on_dune, area);
+		RR.trigger_sanddune(kouden_SandDuneRear.get_counter(0), kouden_SandDuneRear_max, 250, uint_cut(kouden_SandDuneRear_max, 230),
+				4, MRMode::SandDuneRear);
+		RL.trigger_sanddune(kouden_SandDuneRear.get_counter(0), kouden_SandDuneRear_max, 250, uint_cut(kouden_SandDuneRear_max, 230),
+				4, MRMode::SandDuneRear);
 
 		if(mrmode==MRMode::SandDuneFront || mrmode==MRMode::SandDuneRear){
-			if(mrmode==MRMode::SandDuneFront)
-				kouden_SandDuneRear.reset_counter();//絶対に足上げない
-			else{
-				//最大値更新
-				if(kouden_SandDuneRear_max < kouden_SandDuneRear.get_counter(0))
-					kouden_SandDuneRear_max = kouden_SandDuneRear.get_counter(0);
-				if(kouden_SandDuneRear.get_counter(0) < limit(kouden_SandDuneRear_max - 100, kouden_SandDuneRear_max, 0)){
-					kouden_SandDuneRear.reset_counter();
-					MRmode.request_to_change_area(MRMode::ReadyForTussock, CANID::FromRear);
-				}
-			}
 			RR.set_walkmode(Gait::ActiveStableGait, Recovery::Quadrangle, 0);
 			RL.set_walkmode(Gait::ActiveStableGait, Recovery::Quadrangle, 0);
+			if(mrmode==MRMode::SandDuneRear){
+				//最大値更新
+				kouden_SandDuneRear_max = max_uint(kouden_SandDuneRear_max, kouden_SandDuneRear.get_counter(0));
+				//段差に乗っていない かつ 段差上を歩いた回数(各脚)>0 -> モード切替
+				if(RR.get_count_walk_on_dune()>0 && RL.get_count_walk_on_dune()>0){
+					if(!RR.is_on_dune() && !RL.is_on_dune()){
+						if(RR.get_y()>200 && RL.get_y()>200) //ちゃんと下げきってからモード変更
+							MRmode.request_to_change_area(MRMode::ReadyForTussock, CANID::FromRear);
+					}
+				}
+			}
+			else kouden_SandDuneRear.reset_counter();//絶対に足上げない
 		}
 		else if(mrmode==MRMode::Tussock){
-			RR.trigger_tussock((int)can_receiver.get_leg_up_RR());
-			RL.trigger_tussock((int)can_receiver.get_leg_up_RL());
+			RR.trigger_tussock(
+//					(int)can_receiver.get_leg_up_RR()
+					1
+					);
+			RL.trigger_tussock(
+//					(int)can_receiver.get_leg_up_RL()
+					1
+					);
 			RR.set_walkmode(Gait::NormalGait, Recovery::Cycloid, 0);
 			RL.set_walkmode(Gait::NormalGait, Recovery::Cycloid, 0);
 		}
@@ -116,9 +130,17 @@ int main(){
 		}
 
 		walk_speed = can_receiver.get_speed();
-		walk_direction = can_receiver.get_direction();
+		walk_direction =  - ((float)can_receiver.get_direction()) * M_PI / 180.0; //変換
+		walk_pitch = ((float)can_receiver.get_pitch()) * M_PI / 180.0;
 
-		//脚固定系座標での目標位置計算
+		if(mrmode==MRMode::ReadyForTussock)walk_direction *= 2.0;
+
+		//period, duty計算
+		set_cycle(&walk_period, &walk_duty);
+		RR.set_period_duty(walk_period, walk_duty);
+		RL.set_period_duty(walk_period, walk_duty);
+
+		//脚固定系座標での目標位置計算+動作
 		RR.walk(walk_speed, walk_direction);
 		moveLeg(&RRf, &RRr, RR.get_x(), RR.get_y());
 		RL.walk(walk_speed, walk_direction);
@@ -127,8 +149,12 @@ int main(){
 		//歩行量計算+送信
 		walk_dist_right += RR.get_x_distance_move();
 		walk_dist_left += RL.get_x_distance_move();
+
 		walk_dist_rear = (walk_dist_right + walk_dist_left) / 2.0;
-		send_move_position(walk_dist_rear, (unsigned char)kouden_SandDuneRear.read(), CANID::MovePositionRear, CANID::FromRear);
+		kouden_rear.sand_dune = (unsigned char)kouden_SandDuneRear.read();
+		state_rear.right = RR.get_mode();
+		state_rear.left = RL.get_mode();
+		send_leg_info(CANID::FromRear, (short)walk_dist_rear, state_rear.byte[0], kouden_rear.byte[0]);
 
 		//DEBUG
 		if(pc.readable()){
@@ -157,46 +183,55 @@ int main(){
 
 
 void set_cycle(float *period, float *duty){
-	*duty = 0.5;
+//	*duty = 0.5;
 	int mrmode = (int)MRmode.get_now();
 	switch(mrmode){
 	case MRMode::GobiArea:
-		//*period = 1;
-		*period = 200.0/240.0;
+//		*period = 200.0/240.0;
+		*period = 320.0/350.0;
 		break;
+
 	case MRMode::SandDuneFront:
-//		*period = 2;
-		*period = 1.6;
+//		*period = 1.6;
+		*period = 1.2;
 		break;
 	case MRMode::SandDuneRear:
-//		*period = 2;
-		*period = 1.6;
+//		*period = 1.6;
+		*period = 1.2;
 		break;
+
 	case MRMode::ReadyForTussock:
-		//*period = 1;
 		*period = 200.0/240.0;
 		break;
 	case MRMode::Tussock:
 		*period = 1;
 		break;
+
 	case MRMode::Start2:
 		*period = 1;
 		break;
 	case MRMode::StartClimb1:
-		*period = 1;
+//		*period = 1;
+		*period = 0.88;
 		break;
 	case MRMode::StartClimb2:
-		*period = 1;
+//		*period = 1;
+		*period = 0.88;
 		break;
-	default:
-		*period = 1;
+	case MRMode::MountainArea:
+//		*period = 1;
+		*period = 0.88;
+		break;
+	case MRMode::UukhaiZone:
+//		*period = 1;
+		*period = 0.88;
 		break;
 	}
 }
 
 
-void send_move_position(float dist, unsigned char kouden_sanddune, enum CANID::DataType type, enum CANID::From from){
-	can_sender.send_move_position(CANID::generate(from, CANID::ToController, type), dist, kouden_sanddune);
+void send_leg_info(enum CANID::From from, short dist, unsigned char state, unsigned char kouden){
+	can_sender.send_leg_info(CANID::generate(from, CANID::ToController, CANID::LegInfo), dist, state, kouden);
 }
 
 
