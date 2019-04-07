@@ -109,6 +109,7 @@ void autoInit(){
 	InitLegInfo Rf, Rr, Lf, Lr;
 	Rf.enc_reset = Rr.enc_reset = Lf.enc_reset = Lr.enc_reset = false;
 	Rf.finish_init = Rr.finish_init = Lf.finish_init = Lr.finish_init = false;
+	RRf.reset_mode(true); RRr.reset_mode(true); RLf.reset_mode(true); RLr.reset_mode(true);
 	while(!(Rf.finish_init && Rr.finish_init && Lf.finish_init && Lr.finish_init)){
 		AdjustCycle(5000);
 		led0 = 1;
@@ -141,10 +142,26 @@ void autoInit(){
 		if(pc.readable())if(pc.getc()=='s')break;//"s"を押したら強制終了
 	}
 	led0 = 0;
+	RRf.reset_mode(false); RRr.reset_mode(false); RLf.reset_mode(false); RLr.reset_mode(false);
 }
 
 void orbit_log(ParallelLeg *invLeg, ForwardKinematics *fwLeg){
 	fwLeg->estimate();
 	pc.printf("%3.4f\t%3.4f\t", invLeg->get_x(), invLeg->get_y());
 	pc.printf("%3.4f\t%3.4f\t", fwLeg->get_x(), fwLeg->get_y());
+}
+
+
+//歩行角度に補正かける
+float adjust_walk_direction(float direction){
+	float lap = 2.0*M_PI;
+	while(fabs(direction) >= lap){ //2PI以上の角度は切り落とす
+		if(direction > 0)direction -= lap;
+		else if(direction < 0)direction += lap;
+	}
+
+	//曲進角度を2倍に増幅:制限付き
+	//したかったけど考えるの面倒でやっぱりやめる
+
+	return direction;
 }
