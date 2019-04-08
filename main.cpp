@@ -83,11 +83,19 @@ int main(){
 		//基本:脚下げ時に光電センサの値が閾値以下(カウンタ最大値の一定以下?)であれば一番下まで下げる
 		//段差開始:Down時[flag==0 かつ 光電センサのカウンタ > ## かつ walk_on_dune==0] であれば、flagを1にする
 		//段差終了:Down時[flag==1 かつ 光電センサのカウンタ < カウンタの最大値-??] であれば、flagを0にする
-		//指定の歩数以上歩いたら強制的に一番下まで下げる(脚下げ時のみ判断)
+		//乗り上げ後、指定の歩数以上歩いたら強制的に一番下まで下げる(脚下げ時のみ判断)
 		//trigger_sanddune(kouden.get_counter(0), cnt_max, ##, cnt_max-??, max_on_dune, area);
-		RR.trigger_sanddune(kouden_SandDuneRear.get_counter(0), kouden_SandDuneRear_max, 250, uint_cut(kouden_SandDuneRear_max, 230),
+		RR.trigger_sanddune(kouden_SandDuneRear.get_counter(0), kouden_SandDuneRear_max,
+				300,//250,
+				uint_cut(kouden_SandDuneRear_max,
+						270//230
+						),
 				4, MRMode::SandDuneRear);
-		RL.trigger_sanddune(kouden_SandDuneRear.get_counter(0), kouden_SandDuneRear_max, 250, uint_cut(kouden_SandDuneRear_max, 230),
+		RL.trigger_sanddune(kouden_SandDuneRear.get_counter(0), kouden_SandDuneRear_max,
+				300,//250,
+				uint_cut(kouden_SandDuneRear_max,
+						270//230
+						),
 				4, MRMode::SandDuneRear);
 
 		if(mrmode==MRMode::SandDuneFront || mrmode==MRMode::SandDuneRear){
@@ -136,6 +144,9 @@ int main(){
 		//ちゃんと補正したかったが一旦断念
 //		if(mrmode==MRMode::ReadyForTussock)
 //			walk_direction = adjust_walk_direction(walk_direction);
+		//坂道で斜めに歩く問題を解決するために2倍に増幅
+		if(MRMode::StartClimb1<=mrmode && mrmode<=MRMode::UukhaiZone)
+			walk_direction *= 3.0;
 
 		//period, duty計算
 		set_cycle(&walk_period, &walk_duty);

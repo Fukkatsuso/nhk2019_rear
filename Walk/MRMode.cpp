@@ -51,9 +51,9 @@ Orbits orbits[MRMode::Area_end] =
 				{0, 			0/*X_NORMAL_INIT*/,	260, 	HEIGHT_NORMAL,		1},		//GobiArea
 				{0, 			0,				260,	30,					0.5},		//SandDuneFront
 				{0,				0,				260,	140,				0},		//SandDuneRear
-				{0, 			0,				/*260*/265, 	HEIGHT_NORMAL,		1},		//ReadyForTussock
-				{0, 			X_NORMAL_INIT,	/*260*/265, 	HEIGHT_NORMAL,		1},		//Tussock
-				{0, 			X_NORMAL_INIT,	/*260*/265, 	HEIGHT_NORMAL,		1},		//Finish1
+				{0, 			0,				/*260*/260, 	HEIGHT_NORMAL,		1},		//ReadyForTussock
+				{0, 			X_NORMAL_INIT,	/*260*/260, 	HEIGHT_NORMAL,		1},		//Tussock
+				{0, 			X_NORMAL_INIT,	/*260*/260, 	HEIGHT_NORMAL,		1},		//Finish1
 				{0, 			0,				260, 	HEIGHT_NORMAL,		1},		//WaitMountainUrtuu
 				{0, 			0,				200, 	HEIGHT_NORMAL,		0.5},		//GetSign //ここで姿勢変更
 				{0, 			0,				200, 	50,		1},		//Start2
