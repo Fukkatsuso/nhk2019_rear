@@ -201,6 +201,7 @@ void set_cycle(float *period, float *duty){
 	switch(mrmode){
 	case MRMode::GobiArea:
 		*period = 320.0/350.0;
+//		*period = 0.6;
 		break;
 
 	case MRMode::SandDuneFront:
